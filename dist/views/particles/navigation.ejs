@@ -7,7 +7,8 @@
     <a class="navigation__link" href="/catalog">Каталог</a>
     <a class="navigation__link" href="/about-us">О нас</a>
 
-
+    <%=auth%>
+    <% if(auth){%>
     <a class="navigation__link" href="/add">Админка</a>
     <a class="navigation__link" href="/shopping_cart">
       <ion-icon name="cart"></ion-icon>
@@ -15,12 +16,12 @@
     <a class="navigation__link" href="/logout">
       <ion-icon name="log-out"></ion-icon>
     </a>
-    
+     <% } else {%>
 
     <a class="navigation__link" href="/auth">
       <ion-icon name="person-circle-outline"></ion-icon>
     </a>
-    
+    <% }%>
   </div>
 </div>
 
@@ -35,7 +36,7 @@
 
           <li><a class="navigation__link__menu" href="/catalog">Каталог</a></li>
           <li><a class="navigation__link__menu" href="/about-us">О нас</a></li>
-        
+          <% if(auth){%>
             <a class="navigation__link" href="/add">Админка</a>
           <li><a class="navigation__link__menu" href="/shopping_cart">
               <ion-icon name="cart"></ion-icon>
@@ -43,12 +44,12 @@
           <li><a class="navigation__link__menu" href="/logout">
               <ion-icon name="log-out"></ion-icon>
             </a></li>
-          
+            <% } else {%>
 
           <li><a class="navigation__link__menu" href="/auth">
               <ion-icon name="person-circle-outline"></ion-icon>
             </a></li>
-          
+            <% }%>
         </ul>
       </div>
     </div>

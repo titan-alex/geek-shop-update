@@ -18,6 +18,8 @@ class categoryController {
             const category = yield prisma.category.findMany(); //data
             res.render('catalog', {
                 'category': category,
+                auth: req.session.auth,
+                username: req.session.name,
             });
         });
     }

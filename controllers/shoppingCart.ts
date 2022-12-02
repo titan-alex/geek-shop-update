@@ -10,6 +10,8 @@ export class shoppingCart {
 
         res.render('shopping_cart', {
             'shopping_cart': shopping_cart,
+            auth: req.session.auth,
+            username: req.session.name,
         });
     }
 

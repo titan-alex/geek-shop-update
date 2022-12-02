@@ -18,6 +18,8 @@ class shoppingCart {
             const shopping_cart = yield prisma.shopping_cart.findMany(); //data
             res.render('shopping_cart', {
                 'shopping_cart': shopping_cart,
+                auth: req.session.auth,
+                username: req.session.name,
             });
         });
     }
