@@ -12,19 +12,19 @@ export class allProducts {
         res.render('home', {
             'all_products': all_products,
             auth: req.session.auth,
-            username: req.session.name,
+            name: req.session.name,
         });
     }
     async about_us(req: Request, res: Response) {
         res.render('about-us', {
             auth: req.session.auth,
-            username: req.session.name,
+            name: req.session.name,
         });
     }
     async register(req: Request, res: Response) {
         res.render('auth', {
             auth: req.session.auth,
-            username: req.session.name,
+            name: req.session.name,
         });
     }
 

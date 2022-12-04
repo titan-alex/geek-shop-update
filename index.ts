@@ -48,16 +48,14 @@ app.get("/auth", (req: Request, res: Response) => {
 app.get("/shopping_cart", (req: Request, res: Response) => {
   shopping_cart.index(req, res);
 });
-app.get("/logout", (req: Request, res: Response) => {
-  res.render('logout');
-});
 app.get("/add", (req: Request, res: Response) => {
   res.render('add');
 });
 
+// CATALOG
+
 // SESSION
 app.get("/auth", async (req: Request, res: Response) => {
-  console.log(req.session.auth)
   authenticationController.registration(req, res);
 });
 

@@ -11,7 +11,7 @@ export class categoryController {
         res.render('catalog', {
             'category': category,
             auth: req.session.auth,
-            username: req.session.name,
+            name: req.session.name,
         });
     }
 

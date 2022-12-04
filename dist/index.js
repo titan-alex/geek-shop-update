@@ -49,15 +49,12 @@ app.get("/auth", (req, res) => {
 app.get("/shopping_cart", (req, res) => {
     shopping_cart.index(req, res);
 });
-app.get("/logout", (req, res) => {
-    res.render('logout');
-});
 app.get("/add", (req, res) => {
     res.render('add');
 });
+// CATALOG
 // SESSION
 app.get("/auth", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(req.session.auth);
     authenticationController.registration(req, res);
 }));
 app.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* () {

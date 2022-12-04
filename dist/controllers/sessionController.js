@@ -17,17 +17,15 @@ const client_1 = require("@prisma/client");
 const md5_1 = __importDefault(require("md5"));
 const prisma = new client_1.PrismaClient();
 class sessionController {
-    constructor() {
-        this.result = this.makeString();
-    }
-    makeString() {
-        let outString = '';
-        let inOptions = 'abcdefghijklmnopqrstuvwxyz0123456789';
-        for (let i = 0; i < 32; i++) {
-            outString += inOptions.charAt(Math.floor(Math.random() * inOptions.length));
-        }
-        return outString;
-    }
+    // makeString(): string {
+    //     let outString: string = '';
+    //     let inOptions: string = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    //     for (let i = 0; i < 32; i++) {
+    //       outString += inOptions.charAt(Math.floor(Math.random() * inOptions.length));
+    //     }
+    //     return outString;
+    //   }
+    //   result: string = this.makeString();
     registration(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             res.render("auth", {
@@ -75,7 +73,6 @@ class sessionController {
                     name: req.session.name,
                     email: req.body.email
                 });
-                console.log(req.body);
             }
             else {
                 const data = yield prisma.users.findFirst({

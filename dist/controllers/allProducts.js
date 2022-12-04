@@ -20,7 +20,7 @@ class allProducts {
             res.render('home', {
                 'all_products': all_products,
                 auth: req.session.auth,
-                username: req.session.name,
+                name: req.session.name,
             });
         });
     }
@@ -28,7 +28,7 @@ class allProducts {
         return __awaiter(this, void 0, void 0, function* () {
             res.render('about-us', {
                 auth: req.session.auth,
-                username: req.session.name,
+                name: req.session.name,
             });
         });
     }
@@ -36,7 +36,7 @@ class allProducts {
         return __awaiter(this, void 0, void 0, function* () {
             res.render('auth', {
                 auth: req.session.auth,
-                username: req.session.name,
+                name: req.session.name,
             });
         });
     }
