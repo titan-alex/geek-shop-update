@@ -7,15 +7,14 @@
     <a class="navigation__link" href="/catalog">Каталог</a>
     <a class="navigation__link" href="/about-us">О нас</a>
 
-    <%=auth%>
     <% if(auth){%>
     <a class="navigation__link" href="/add">Админка</a>
     <a class="navigation__link" href="/shopping_cart">
       <ion-icon name="cart"></ion-icon>
     </a>
-    <a class="navigation__link" href="/logout">
-      <ion-icon name="log-out"></ion-icon>
-    </a>
+    <form class="navigation__link" action="/logout" method="post">
+      <button class="logout" type="submit"><ion-icon name="log-out"></ion-icon></button>
+    </form>
      <% } else {%>
 
     <a class="navigation__link" href="/auth">

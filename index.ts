@@ -1,17 +1,14 @@
 import express, { Express, Request, Response } from 'express';
-import  session  from 'express-session';
-import { Session } from 'inspector';
+import session from 'express-session';
 import path from 'path';
-import { ItemsController } from './controllers/ItemsController';
 import { allProducts } from './controllers/allProducts';
 import { categoryController } from './controllers/categoryController';
 import { shoppingCart } from './controllers/shoppingCart';
 import { sessionController } from './controllers/sessionController';
 
 const app: Express = express();
-const itemsController = new ItemsController();
-const  all_products = new allProducts();
-const  category = new categoryController();
+const all_products = new allProducts();
+const category = new categoryController();
 const shopping_cart = new shoppingCart();
 const authenticationController = new sessionController();
 
@@ -29,9 +26,9 @@ app.listen(3000, () => {
 // Инициализация сессии
 declare module "express-session" {
   interface SessionData {
-      auth: boolean,
-      name: string,
-      email: string,
+    auth: boolean,
+    name: string,
+    email: string,
   }
 };
 app.use(session({ secret: "Secret", resave: false, saveUninitialized: true }));
@@ -60,6 +57,7 @@ app.get("/add", (req: Request, res: Response) => {
 
 // SESSION
 app.get("/auth", async (req: Request, res: Response) => {
+  console.log(req.session.auth)
   authenticationController.registration(req, res);
 });
 

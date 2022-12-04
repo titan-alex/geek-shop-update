@@ -14,9 +14,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sessionController = void 0;
 const client_1 = require("@prisma/client");
-const bcrypt_1 = __importDefault(require("bcrypt"));
+const md5_1 = __importDefault(require("md5"));
 const prisma = new client_1.PrismaClient();
 class sessionController {
+    constructor() {
+        this.result = this.makeString();
+    }
+    makeString() {
+        let outString = '';
+        let inOptions = 'abcdefghijklmnopqrstuvwxyz0123456789';
+        for (let i = 0; i < 32; i++) {
+            outString += inOptions.charAt(Math.floor(Math.random() * inOptions.length));
+        }
+        return outString;
+    }
     registration(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             res.render("auth", {
@@ -35,20 +46,16 @@ class sessionController {
                     name: req.body.name
                 }
             });
-            let password = req.body.password;
-            let hash = data === null || data === void 0 ? void 0 : data.password;
             if (data != null) {
-                bcrypt_1.default.compare(password, String(hash), (err, result) => {
-                    if (result == true) {
-                        req.session.auth = true;
-                        res.redirect('/');
-                    }
-                    else {
-                        req.session.auth = false;
-                        res.redirect('/auth');
-                    }
-                });
-                req.session.name = [req.body.name][0];
+                if ((0, md5_1.default)(String([req.body.password])) == String(data.password)) {
+                    req.session.auth = true;
+                    req.session.name = [req.body.name][0];
+                    res.redirect('/');
+                }
+                else {
+                    req.session.auth = false;
+                    res.redirect('/auth');
+                }
             }
             else
                 res.render("login", {
@@ -61,13 +68,14 @@ class sessionController {
     ;
     register(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (req.body.name == "" || req.body.password == "") {
+            if (req.body.name == "" || req.body.password == "" || req.body.email == "") {
                 res.render('register', {
                     error: "The field cannot be empty",
                     auth: req.session.auth,
                     name: req.session.name,
                     email: req.body.email
                 });
+                console.log(req.body);
             }
             else {
                 const data = yield prisma.users.findFirst({
@@ -75,7 +83,6 @@ class sessionController {
                         name: req.body.name
                     }
                 });
-                let salt = 10;
                 if (data != null) {
                     res.render('register', {
                         error: "name already taken",
@@ -88,13 +95,7 @@ class sessionController {
                     yield prisma.users.create({
                         data: {
                             name: req.body.name,
-                            password: String(bcrypt_1.default.genSalt(10, function (err, salt) {
-                                bcrypt_1.default.hash(req.body.password, salt, function (err, hash) {
-                                    console.log(req.body.password);
-                                    console.log(hash);
-                                    console.log(bcrypt_1.default.compareSync(req.body.password, hash));
-                                });
-                            })),
+                            password: (0, md5_1.default)(String(req.body.password)),
                             email: req.body.email
                         }
                     });

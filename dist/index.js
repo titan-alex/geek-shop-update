@@ -15,13 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const express_session_1 = __importDefault(require("express-session"));
 const path_1 = __importDefault(require("path"));
-const ItemsController_1 = require("./controllers/ItemsController");
 const allProducts_1 = require("./controllers/allProducts");
 const categoryController_1 = require("./controllers/categoryController");
 const shoppingCart_1 = require("./controllers/shoppingCart");
 const sessionController_1 = require("./controllers/sessionController");
 const app = (0, express_1.default)();
-const itemsController = new ItemsController_1.ItemsController();
 const all_products = new allProducts_1.allProducts();
 const category = new categoryController_1.categoryController();
 const shopping_cart = new shoppingCart_1.shoppingCart();
@@ -59,6 +57,7 @@ app.get("/add", (req, res) => {
 });
 // SESSION
 app.get("/auth", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log(req.session.auth);
     authenticationController.registration(req, res);
 }));
 app.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* () {

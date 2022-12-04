@@ -1,10 +1,25 @@
 import { Request, Response } from 'express';
 import { users, PrismaClient } from "@prisma/client";
-import bcrypt from 'bcrypt';
+import md5 from "md5";
+
 
 const prisma: PrismaClient = new PrismaClient();
 
 export class sessionController {
+    makeString(): string {
+        let outString: string = '';
+        let inOptions: string = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    
+        for (let i = 0; i < 32; i++) {
+    
+          outString += inOptions.charAt(Math.floor(Math.random() * inOptions.length));
+    
+        }
+    
+        return outString;
+      }
+    
+      result: string = this.makeString();
     async registration(req: Request, res: Response) {
         res.render("auth",
             {
@@ -21,12 +36,10 @@ export class sessionController {
                 name: req.body.name
             }
         })
-        let password = req.body.password;
-        let hash = data?.password;
         if (data != null) {
-            bcrypt.compare(password, String(hash), (err, result) => {
-                if (result == true) {
+                if (md5(String([req.body.password])) == String(data.password)) {
                     req.session.auth = true;
+                    req.session.name = [req.body.name][0];
                     res.redirect('/');
                 }
                 else {
@@ -34,8 +47,6 @@ export class sessionController {
                     req.session.auth = false;
                     res.redirect('/auth');
                 }
-            });
-            req.session.name = [req.body.name][0];
         }
         else res.render("login", {
             error: "The user does not exist",
@@ -45,20 +56,20 @@ export class sessionController {
     };
 
     async register(req: Request, res: Response) {
-        if (req.body.name == "" || req.body.password == "") {
+        if (req.body.name == "" || req.body.password == "" || req.body.email == "") {
             res.render('register', {
                 error: "The field cannot be empty",
                 auth: req.session.auth,
                 name: req.session.name,
                 email: req.body.email
             });
+            console.log(req.body)
         } else {
             const data = await prisma.users.findFirst({
                 where: {
                     name: req.body.name
                 }
             })
-            let salt = 10;
             if (data != null) {
                 res.render('register', {
                     error: "name already taken",
@@ -70,14 +81,7 @@ export class sessionController {
                 await prisma.users.create({
                     data: {
                         name: req.body.name,
-                        password: String(
-                            bcrypt.genSalt(10, function (err, salt) {
-                                bcrypt.hash(req.body.password, salt, function (err, hash) {
-                                    console.log(req.body.password);
-                                    console.log(hash);
-                                    console.log(bcrypt.compareSync(req.body.password, hash));
-                                });
-                            })),
+                        password: md5(String(req.body.password)),
                         email: req.body.email
                     }
                 });
@@ -87,6 +91,7 @@ export class sessionController {
             }
         }
     };
+    
     async logout (req: Request, res: Response) {
         req.session.auth = false;
         req.session.name = undefined;

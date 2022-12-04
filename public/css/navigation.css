@@ -74,6 +74,16 @@
     border-bottom: 2px solid #BFE2FF;
     text-align: center;
 }
+
+.logout{
+  border: none;
+  background-color: white;
+ }
+ .logout ion-icon{
+   color: black;
+   font-size: 33px;
+  
+  }
 /* Оформление кнопки на странице */
 .side-button-1-wr {
     text-align: center; /* Контейнер для кнопки, чтобы было удобнее ее разместить */
