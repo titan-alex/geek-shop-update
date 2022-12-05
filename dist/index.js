@@ -19,10 +19,12 @@ const allProducts_1 = require("./controllers/allProducts");
 const categoryController_1 = require("./controllers/categoryController");
 const shoppingCart_1 = require("./controllers/shoppingCart");
 const sessionController_1 = require("./controllers/sessionController");
+const pageController_1 = require("./controllers/pageController");
 const app = (0, express_1.default)();
 const all_products = new allProducts_1.allProducts();
 const category = new categoryController_1.categoryController();
 const shopping_cart = new shoppingCart_1.shoppingCart();
+const pagesController = new pageController_1.pageController();
 const authenticationController = new sessionController_1.sessionController();
 app.use(express_1.default.static('public'));
 app.use(express_1.default.urlencoded({ extended: true }));
@@ -35,24 +37,30 @@ app.listen(3000, () => {
 app.use((0, express_session_1.default)({ secret: "Secret", resave: false, saveUninitialized: true }));
 // NAVIGATION
 app.get("/", (req, res) => {
-    all_products.index(req, res);
+    pagesController.index(req, res);
 });
 app.get("/about-us", (req, res) => {
-    all_products.about_us(req, res);
+    pagesController.about_us(req, res);
 });
 app.get("/catalog", (req, res) => {
     category.index(req, res);
 });
 app.get("/auth", (req, res) => {
-    all_products.register(req, res);
+    pagesController.register(req, res);
 });
 app.get("/shopping_cart", (req, res) => {
     shopping_cart.index(req, res);
 });
 app.get("/add", (req, res) => {
-    res.render('add');
+    pagesController.add(req, res);
 });
-// CATALOG
+// STORE
+app.post("/store", (req, res) => {
+    category.store(req, res);
+});
+app.post("/delete", (req, res) => {
+    category.delete(req, res);
+});
 // SESSION
 app.get("/auth", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     authenticationController.registration(req, res);

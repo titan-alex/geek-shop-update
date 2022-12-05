@@ -9,44 +9,44 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.categoryController = void 0;
+exports.pageController = void 0;
 const client_1 = require("@prisma/client");
 const prisma = new client_1.PrismaClient();
-class categoryController {
+class pageController {
     index(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const category = yield prisma.category.findMany(); //data
-            res.render('catalog', {
-                'category': category,
+            const all_products = yield prisma.all_products.findMany(); //data
+            console.log(req.session.auth);
+            res.render('home', {
+                'all_products': all_products,
                 auth: req.session.auth,
                 name: req.session.name,
             });
         });
     }
-    store(req, res) {
+    about_us(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { title, image, href, typ } = req.body;
-            yield prisma.category.create({
-                data: {
-                    title,
-                    image,
-                    href,
-                    typ
-                }
+            res.render('about-us', {
+                auth: req.session.auth,
+                name: req.session.name,
             });
-            res.redirect('/catalog');
         });
     }
-    delete(req, res) {
+    register(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.body;
-            yield prisma.category.delete({
-                where: {
-                    id: Number(id)
-                }
+            res.render('auth', {
+                auth: req.session.auth,
+                name: req.session.name,
             });
-            res.redirect('/catalog');
+        });
+    }
+    add(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            res.render('add', {
+                auth: req.session.auth,
+                name: req.session.name,
+            });
         });
     }
 }
-exports.categoryController = categoryController;
+exports.pageController = pageController;

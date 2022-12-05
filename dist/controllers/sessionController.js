@@ -17,15 +17,6 @@ const client_1 = require("@prisma/client");
 const md5_1 = __importDefault(require("md5"));
 const prisma = new client_1.PrismaClient();
 class sessionController {
-    // makeString(): string {
-    //     let outString: string = '';
-    //     let inOptions: string = 'abcdefghijklmnopqrstuvwxyz0123456789';
-    //     for (let i = 0; i < 32; i++) {
-    //       outString += inOptions.charAt(Math.floor(Math.random() * inOptions.length));
-    //     }
-    //     return outString;
-    //   }
-    //   result: string = this.makeString();
     registration(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             res.render("auth", {
@@ -44,19 +35,16 @@ class sessionController {
                     name: req.body.name
                 }
             });
+            console.log(req.body.name);
             if (data != null) {
                 if ((0, md5_1.default)(String([req.body.password])) == String(data.password)) {
                     req.session.auth = true;
                     req.session.name = [req.body.name][0];
-                    res.redirect('/');
-                }
-                else {
-                    req.session.auth = false;
-                    res.redirect('/auth');
+                    res.redirect("/");
                 }
             }
             else
-                res.render("login", {
+                res.render("auth", {
                     error: "The user does not exist",
                     auth: req.session.auth,
                     name: req.session.name,

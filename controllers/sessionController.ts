@@ -6,20 +6,7 @@ import md5 from "md5";
 const prisma: PrismaClient = new PrismaClient();
 
 export class sessionController {
-    // makeString(): string {
-    //     let outString: string = '';
-    //     let inOptions: string = 'abcdefghijklmnopqrstuvwxyz0123456789';
     
-    //     for (let i = 0; i < 32; i++) {
-    
-    //       outString += inOptions.charAt(Math.floor(Math.random() * inOptions.length));
-    
-    //     }
-    
-    //     return outString;
-    //   }
-    
-    //   result: string = this.makeString();
     async registration(req: Request, res: Response) {
         res.render("auth",
             {
@@ -35,20 +22,16 @@ export class sessionController {
             where: {
                 name: req.body.name
             }
-        })
+        });
+        console.log(req.body.name);
         if (data != null) {
-                if (md5(String([req.body.password])) == String(data.password)) {
-                    req.session.auth = true;
-                    req.session.name = [req.body.name][0];
-                    res.redirect('/');
-                }
-                else {
-
-                    req.session.auth = false;
-                    res.redirect('/auth');
-                }
+            if (md5(String([req.body.password])) == String(data.password)) {
+                req.session.auth = true;
+                req.session.name = [req.body.name][0];
+                res.redirect("/")
+            }
         }
-        else res.render("login", {
+        else res.render("auth", {
             error: "The user does not exist",
             auth: req.session.auth,
             name: req.session.name,

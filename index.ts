@@ -5,11 +5,13 @@ import { allProducts } from './controllers/allProducts';
 import { categoryController } from './controllers/categoryController';
 import { shoppingCart } from './controllers/shoppingCart';
 import { sessionController } from './controllers/sessionController';
+import { pageController } from './controllers/pageController';
 
 const app: Express = express();
 const all_products = new allProducts();
 const category = new categoryController();
 const shopping_cart = new shoppingCart();
+const pagesController = new pageController();
 const authenticationController = new sessionController();
 
 app.use(express.static('public'));
@@ -34,25 +36,31 @@ declare module "express-session" {
 app.use(session({ secret: "Secret", resave: false, saveUninitialized: true }));
 // NAVIGATION
 app.get("/", (req: Request, res: Response) => {
-  all_products.index(req, res);
+  pagesController.index(req, res);
 });
 app.get("/about-us", (req: Request, res: Response) => {
-  all_products.about_us(req, res);
+  pagesController.about_us(req, res);
 });
 app.get("/catalog", (req: Request, res: Response) => {
   category.index(req, res);
 });
 app.get("/auth", (req: Request, res: Response) => {
-  all_products.register(req, res);
+  pagesController.register(req, res);
 });
 app.get("/shopping_cart", (req: Request, res: Response) => {
   shopping_cart.index(req, res);
 });
 app.get("/add", (req: Request, res: Response) => {
-  res.render('add');
+  pagesController.add(req, res);
 });
 
-// CATALOG
+// STORE
+app.post("/store", (req: Request, res: Response) => {
+  category.store(req, res);
+});
+app.post("/delete", (req: Request, res: Response) => {
+  category.delete(req, res);
+});
 
 // SESSION
 app.get("/auth", async (req: Request, res: Response) => {

@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE `category` MODIFY `title` VARCHAR(255) NULL,
+    MODIFY `image` VARCHAR(255) NULL,
+    MODIFY `href` VARCHAR(255) NULL,
+    MODIFY `typ` VARCHAR(255) NULL;

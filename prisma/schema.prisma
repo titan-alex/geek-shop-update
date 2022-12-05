@@ -22,10 +22,10 @@ model all_products {
 
 model category {
   id        Int      @id @default(autoincrement())
-  title     String   @db.VarChar(255) 
-  image     String   @db.VarChar(255) 
-  typ       String   @db.VarChar(255) 
-  href      String   @db.VarChar(255) 
+  title     String?   @db.VarChar(255) 
+  image     String?  @db.VarChar(255) 
+  typ       String?   @db.VarChar(255) 
+  href      String?   @db.VarChar(255) 
 }
 
 model users{

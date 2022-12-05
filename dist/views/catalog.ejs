@@ -28,4 +28,41 @@
   </div>
   <% } %>
 </div>
+
+<form action="/store" method="post" class="form_group_all">
+  <div class="form-group">
+    <label class="form-group__label" for="title">Заголовок</label>
+    <input value="" class="form-group__input" type="text" id="title" name="title" placeholder="title">
+  </div>
+
+  <div class="form-group">
+    <label class="form-group__label" for="image">Картинка</label>
+    <input value="" class="form-group__input" type="text" id="image" name="image" placeholder="image">
+  </div>
+
+  <div class="form-group">
+    <label class="form-group__label" for="title">Путь</label>
+    <input value="" class="form-group__input" type="text" id="href" name="href" placeholder="href">
+  </div>
+
+  <div class="form-group">
+    <label class="form-group__label" for="title">Тип</label>
+    <input value="" class="form-group__input" type="text" id="typ" name="typ" placeholder="typ">
+  </div>
+
+
+  <input class="form-button" type="submit" value="Добавить">
+
+
+</form>
+
+<form method="post" action="/delete" class="form_group_all">
+  <div class="form-group">
+    <label class="form-group__label" for="title">Id</label>
+    <input value="" class="form-group__input" type="text" id="id" name="id" placeholder="Id">
+  </div>
+
+  <input class="form-button-delete" type="submit" value="Удалить">
+</form>
+
 <%- include('particles/footer.ejs') %>
