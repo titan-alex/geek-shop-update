@@ -23,7 +23,6 @@ export class sessionController {
                 name: req.body.name
             }
         });
-        console.log(req.body.name);
         if (data != null) {
             if (md5(String([req.body.password])) == String(data.password)) {
                 req.session.auth = true;

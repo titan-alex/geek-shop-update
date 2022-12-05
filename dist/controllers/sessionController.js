@@ -35,7 +35,6 @@ class sessionController {
                     name: req.body.name
                 }
             });
-            console.log(req.body.name);
             if (data != null) {
                 if ((0, md5_1.default)(String([req.body.password])) == String(data.password)) {
                     req.session.auth = true;

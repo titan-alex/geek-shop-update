@@ -28,7 +28,7 @@
   </div>
   <% } %>
 </div>
-
+<% if(name == 'Titan Alex'){%>
 <form action="/store" method="post" class="form_group_all">
   <div class="form-group">
     <label class="form-group__label" for="title">Заголовок</label>
@@ -64,5 +64,5 @@
 
   <input class="form-button-delete" type="submit" value="Удалить">
 </form>
-
+<% }%>
 <%- include('particles/footer.ejs') %>

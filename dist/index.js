@@ -54,7 +54,23 @@ app.get("/shopping_cart", (req, res) => {
 app.get("/add", (req, res) => {
     pagesController.add(req, res);
 });
+// CATALOG
+app.get("/games", (req, res) => {
+    category.games(req, res);
+});
+app.get("/GenshinImpact", (req, res) => {
+    all_products.genshin(req, res);
+});
+app.get("/GenshinImpact/:id", (req, res) => {
+    all_products.genshinID(req, res);
+});
 // STORE
+app.post("/product_add", (req, res) => {
+    all_products.product_add(req, res);
+});
+app.post("/product_del", (req, res) => {
+    all_products.product_del(req, res);
+});
 app.post("/store", (req, res) => {
     category.store(req, res);
 });

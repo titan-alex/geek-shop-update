@@ -34,6 +34,4 @@ async index(req: Request, res: Response) {
             name: req.session.name,
         });
     }
-
-
 }

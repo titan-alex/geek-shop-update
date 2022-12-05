@@ -15,7 +15,11 @@ const prisma = new client_1.PrismaClient();
 class categoryController {
     index(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const category = yield prisma.category.findMany(); //data
+            const category = yield prisma.category.findMany({
+                where: {
+                    typ: String('category'),
+                }
+            });
             res.render('catalog', {
                 'category': category,
                 auth: req.session.auth,
@@ -46,6 +50,20 @@ class categoryController {
                 }
             });
             res.redirect('/catalog');
+        });
+    }
+    games(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const category = yield prisma.category.findMany({
+                where: {
+                    typ: String('games'),
+                }
+            });
+            res.render('category/games', {
+                'games': category,
+                auth: req.session.auth,
+                name: req.session.name,
+            });
         });
     }
 }

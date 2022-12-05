@@ -6,7 +6,11 @@ const prisma: PrismaClient = new PrismaClient();
 export class categoryController {
 
     async index(req: Request, res: Response) {
-        const category: category[] = await prisma.category.findMany();//data
+        const category: category[] = await prisma.category.findMany({
+            where:{
+                typ: String('category'), 
+            }
+        });
 
         res.render('catalog', {
             'category': category,
@@ -40,6 +44,19 @@ export class categoryController {
         });
 
         res.redirect('/catalog');
+    }
+
+    async games(req: Request, res: Response) {
+        const category: category[] = await prisma.category.findMany({
+            where:{
+                typ: String('games'), 
+            }
+        });
+        res.render('category/games', {
+            'games': category,
+            auth: req.session.auth,
+            name: req.session.name,
+        });
     }
 
 }

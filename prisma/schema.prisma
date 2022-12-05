@@ -12,12 +12,12 @@ datasource db {
 
 model all_products {
   id            Int      @id @default(autoincrement())
-  title         String   @db.VarChar(255)
-  image         String   @db.VarChar(255)
-  description   String   @db.VarChar(1000)
-  price         String   @db.VarChar(255)
-  category      String   @db.VarChar(255) 
-  href          String   @db.VarChar(255)
+  title         String?   @db.VarChar(255)
+  image         String?   @db.VarChar(255)
+  description   String?   @db.VarChar(1000)
+  price         String?   @db.VarChar(255)
+  category      String?   @db.VarChar(255) 
+  href          String?   @db.VarChar(255)
 }
 
 model category {
