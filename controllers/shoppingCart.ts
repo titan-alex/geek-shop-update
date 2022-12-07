@@ -8,7 +8,7 @@ export class shoppingCart {
     async index(req: Request, res: Response) {
         console.log(req.session.name);
         const shopping_cart: shopping_cart[] = await prisma.shopping_cart.findMany({
-            where:{
+            where: {
                 name: String(req.session.name),
             }
         });
@@ -20,17 +20,17 @@ export class shoppingCart {
         });
     }
 
-    async cart_add(req: Request, res: Response){
+    async cart_add(req: Request, res: Response) {
         const data = await prisma.shopping_cart.findFirst({
-            where:{
+            where: {
                 title: req.body.title
             }
         });
 
-        if(req.session.auth == true && data == null){
-            const{ title, description,image,price,category,href,name} = req.body;
+        if (req.session.auth == true && data == null) {
+            const { title, description, image, price, category, href, name } = req.body;
             await prisma.shopping_cart.create({
-                data:{
+                data: {
                     title,
                     description,
                     image,
@@ -39,15 +39,21 @@ export class shoppingCart {
                     href,
                     name,
 
-                } 
+                }
             });
-             res.redirect('/');
+            res.redirect('/');
         } else res.render("/", {
             error: "Auth please",
         });
-
-      
     }
-    
 
+    async cart_del(req: Request, res: Response) {
+        const { id } = req.body;
+        await prisma.shopping_cart.delete({
+           where: {
+                id: Number(id)
+            }
+        });
+        res.redirect('/shopping_cart');
+    }
 }

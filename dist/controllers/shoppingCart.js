@@ -56,5 +56,16 @@ class shoppingCart {
                 });
         });
     }
+    cart_del(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.body;
+            yield prisma.shopping_cart.delete({
+                where: {
+                    id: Number(id)
+                }
+            });
+            res.redirect('/shopping_cart');
+        });
+    }
 }
 exports.shoppingCart = shoppingCart;
