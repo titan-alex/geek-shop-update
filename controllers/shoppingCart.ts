@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { shopping_cart, PrismaClient } from '@prisma/client';
+import { all_products, shopping_cart, PrismaClient } from '@prisma/client';
 
 const prisma: PrismaClient = new PrismaClient();
 
@@ -21,14 +21,16 @@ export class shoppingCart {
     }
 
     async cart_add(req: Request, res: Response) {
+        const all_products: all_products[] = await prisma.all_products.findMany();
+
         const data = await prisma.shopping_cart.findFirst({
             where: {
                 title: req.body.title
             }
         });
-
+        console.log(data);
         if (req.session.auth == true && data == null) {
-            const { title, description, image, price, category, href, name } = req.body;
+            const { title, description, image, price, category, href, name, article } = req.body;
             await prisma.shopping_cart.create({
                 data: {
                     title,
@@ -38,13 +40,19 @@ export class shoppingCart {
                     category,
                     href,
                     name,
+                    article,
 
                 }
             });
             res.redirect('/');
-        } else res.render("/", {
-            error: "Auth please",
+        } else if ( data != null)  {
+            res.render("home", {
+            error: "Auth pls",
+            'all_products': all_products,
+            auth: req.session.auth,
+            name: req.session.name,
         });
+    }
     }
 
     async cart_del(req: Request, res: Response) {

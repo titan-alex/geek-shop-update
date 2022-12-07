@@ -30,13 +30,15 @@ class shoppingCart {
     }
     cart_add(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            const all_products = yield prisma.all_products.findMany();
             const data = yield prisma.shopping_cart.findFirst({
                 where: {
                     title: req.body.title
                 }
             });
+            console.log(data);
             if (req.session.auth == true && data == null) {
-                const { title, description, image, price, category, href, name } = req.body;
+                const { title, description, image, price, category, href, name, article } = req.body;
                 yield prisma.shopping_cart.create({
                     data: {
                         title,
@@ -46,14 +48,19 @@ class shoppingCart {
                         category,
                         href,
                         name,
+                        article,
                     }
                 });
                 res.redirect('/');
             }
-            else
-                res.render("/", {
-                    error: "Auth please",
+            else if (data != null) {
+                res.render("home", {
+                    error: "Auth pls",
+                    'all_products': all_products,
+                    auth: req.session.auth,
+                    name: req.session.name,
                 });
+            }
         });
     }
     cart_del(req, res) {
