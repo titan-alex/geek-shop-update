@@ -1,12 +1,13 @@
 import { Request, Response } from 'express';
 import { users, PrismaClient } from "@prisma/client";
 import md5 from "md5";
+import { Console } from 'console';
 
 
 const prisma: PrismaClient = new PrismaClient();
 
 export class sessionController {
-    
+
     async registration(req: Request, res: Response) {
         res.render("auth",
             {
@@ -29,12 +30,21 @@ export class sessionController {
                 req.session.name = [req.body.name][0];
                 res.redirect("/")
             }
+            else{
+                res.render("auth", {
+                    error: "The user does not exist",
+                    auth: req.session.auth,
+                    name: req.session.name,
+                });
+            }
         }
-        else res.render("auth", {
-            error: "The user does not exist",
-            auth: req.session.auth,
-            name: req.session.name,
-        });
+        else {
+            res.render("auth", {
+                error: "The user does not exist",
+                auth: req.session.auth,
+                name: req.session.name,
+            });
+        }
     };
 
     async register(req: Request, res: Response) {
@@ -50,9 +60,9 @@ export class sessionController {
                 where: {
                     name: req.body.name
                 }
-            })
+            });
             if (data != null) {
-                res.render('register', {
+                res.render('auth', {
                     error: "name already taken",
                     auth: req.session.auth,
                     name: req.session.name,
@@ -72,8 +82,8 @@ export class sessionController {
             }
         }
     };
-    
-    async logout (req: Request, res: Response) {
+
+    async logout(req: Request, res: Response) {
         req.session.auth = false;
         req.session.name = undefined;
         res.redirect("/");

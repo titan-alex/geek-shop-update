@@ -41,13 +41,21 @@ class sessionController {
                     req.session.name = [req.body.name][0];
                     res.redirect("/");
                 }
+                else {
+                    res.render("auth", {
+                        error: "The user does not exist",
+                        auth: req.session.auth,
+                        name: req.session.name,
+                    });
+                }
             }
-            else
+            else {
                 res.render("auth", {
                     error: "The user does not exist",
                     auth: req.session.auth,
                     name: req.session.name,
                 });
+            }
         });
     }
     ;
@@ -68,7 +76,7 @@ class sessionController {
                     }
                 });
                 if (data != null) {
-                    res.render('register', {
+                    res.render('auth', {
                         error: "name already taken",
                         auth: req.session.auth,
                         name: req.session.name,
