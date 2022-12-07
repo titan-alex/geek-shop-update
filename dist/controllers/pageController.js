@@ -15,8 +15,7 @@ const prisma = new client_1.PrismaClient();
 class pageController {
     index(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const all_products = yield prisma.all_products.findMany(); //data
-            console.log(req.session.auth);
+            const all_products = yield prisma.all_products.findMany();
             res.render('home', {
                 'all_products': all_products,
                 auth: req.session.auth,

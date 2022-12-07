@@ -36,9 +36,14 @@ model users{
 }
 
 model shopping_cart{
-  id            Int      @id @default(autoincrement())
-  title         String   @db.VarChar(255) 
-  description   String   @db.VarChar(1000)
-  image         String   @db.VarChar(255)
-  price         String   @db.VarChar(255)
+  id            Int       @id @default(autoincrement())
+  name      String    @db.VarChar(255) 
+  title         String?   @db.VarChar(255) 
+  image         String?   @db.VarChar(255)
+  description   String?   @db.VarChar(1000)
+  price         String?   @db.VarChar(255)
+  category      String?   @db.VarChar(255) 
+  href          String?   @db.VarChar(255)
+
+  
 }

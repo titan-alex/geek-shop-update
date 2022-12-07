@@ -7,8 +7,7 @@ const prisma: PrismaClient = new PrismaClient();
 export class pageController {
 
 async index(req: Request, res: Response) {
-        const all_products: all_products[] = await prisma.all_products.findMany();//data
-        console.log(req.session.auth)
+        const all_products: all_products[] = await prisma.all_products.findMany();
 
         res.render('home', {
             'all_products': all_products,

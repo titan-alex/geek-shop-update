@@ -15,12 +15,45 @@ const prisma = new client_1.PrismaClient();
 class shoppingCart {
     index(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const shopping_cart = yield prisma.shopping_cart.findMany(); //data
+            console.log(req.session.name);
+            const shopping_cart = yield prisma.shopping_cart.findMany({
+                where: {
+                    name: String(req.session.name),
+                }
+            });
             res.render('shopping_cart', {
                 'shopping_cart': shopping_cart,
                 auth: req.session.auth,
                 name: req.session.name,
             });
+        });
+    }
+    cart_add(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const data = yield prisma.shopping_cart.findFirst({
+                where: {
+                    title: req.body.title
+                }
+            });
+            if (req.session.auth == true && data == null) {
+                const { title, description, image, price, category, href, name } = req.body;
+                yield prisma.shopping_cart.create({
+                    data: {
+                        title,
+                        description,
+                        image,
+                        price,
+                        category,
+                        href,
+                        name,
+                    }
+                });
+                res.redirect('/');
+            }
+            else
+                res.render("/", {
+                    error: "Auth please",
+                });
         });
     }
 }

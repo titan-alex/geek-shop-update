@@ -17,13 +17,14 @@
         </div>
         <p><%= all_products.description %></p>
         <form method="post" action="/cart_add" class="">
-          <input value="<%= all_products.id %>" class="form-group__input" type="text" id="shopping-cart" name="shopping-cart" placeholder="" style="display: none;">
-          <input value="<%= all_products.article %>" class="form-group__input" type="text" id="article" name="article" placeholder="" style="display: none;">
-          <input value="<%= all_products.href %>" class="form-group__input" type="text" id="shopping-cart" name="shopping-cart" placeholder="" style="display: none;">
-          <input value="<%= all_products.title %>" class="form-group__input" type="text" id="title" name="title" placeholder="title" style="display: none;">
-          <input value="<%= all_products.description %>" class="form-group__input" type="text" id="description" name="description" placeholder="Описание" style="display: none;">
-          <input value="<%= all_products.image %>" class="form-group__input" type="text" id="image" name="image" placeholder="image" style="display: none;">
-          <input value="<%= all_products.price %>" class="form-group__input" type="text" id="price" name="price" placeholder="price" style="display: none;">
+          <input value="<%= all_products.id %>" class="form-group__input" type="text" id="shopping-cart" name="shopping-cart"  style="display: none">
+          <input value="<%= name %>" class="form-group__input" type="text" id="name" name="name"  style="display: none">
+          <input value="<%= all_products.title %>" class="form-group__input" type="text" id="title" name="title" style="display: none">
+          <input value="<%= all_products.image %>" class="form-group__input" type="text" id="image" name="image" style="display: none">
+          <input value="<%= all_products.description %>" class="form-group__input" type="text" id="description" name="description"  style="display: none">
+          <input value="<%= all_products.price %>" class="form-group__input" type="text" id="price" name="price" style="display: none">
+          <input value="<%= all_products.category %>" class="form-group__input" type="text" id="category" name="category"  style="display: none">
+          <input value="<%= all_products.href %>" class="form-group__input" type="text" id="href" name="href"  style="display: none">   
           <button class="product__buy" type="submit"><ion-icon name="basket"></ion-icon></button>
         </form>
       </div>

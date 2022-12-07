@@ -54,6 +54,12 @@ app.get("/add", (req: Request, res: Response) => {
   pagesController.add(req, res);
 });
 
+// STORE
+
+app.post("/cart_add", (req: Request, res: Response) => {
+  shopping_cart.cart_add(req, res);
+});
+
 // CATALOG
 
 app.get("/games", (req: Request, res: Response) => {
