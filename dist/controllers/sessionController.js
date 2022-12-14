@@ -66,7 +66,9 @@ class sessionController {
                     if ((0, md5_1.default)(String([req.body.password])) == String(data.password)) {
                         req.session.auth = true;
                         req.session.name = [req.body.name][0];
-                        logger.addLog(`${ip.address()} is login on account ${req.session.name}`);
+                        // logger.addLog(
+                        //     tg.sendMessage(`${ip.address()} is login on account ${req.session.name}`)
+                        // );
                         res.redirect("/");
                     }
                     else {

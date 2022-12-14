@@ -1,13 +1,19 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Logger = void 0;
-const fs_1 = __importDefault(require("fs"));
 class Logger {
     addLog(message) {
-        fs_1.default.appendFile("./logger/logs.txt", '\n\n[' + new Date() + ']\n' + message, (err) => { });
+        // fs.appendFile("./logger/logs.txt", '\n\n[' + new Date() + ']\n' + message, (err) => {})
+        const TelegramLogger = require('node-telegram-logger');
+        let tg = new TelegramLogger('5954814248:AAFb5tiwtGStbNVsXQxI2SEmWxzrAYUIQjs', '5954814248');
+        const winston = require('winston');
+        const logger = winston.createLogger({
+            level: 'info',
+            transports: [
+                tg.setWinstonTransporter(tg)
+            ]
+        });
+        logger.log('info', 'ff');
     }
     catcherErr(tryFunc, endFunc) {
         try {
