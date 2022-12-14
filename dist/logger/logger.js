@@ -7,7 +7,7 @@ exports.Logger = void 0;
 const fs_1 = __importDefault(require("fs"));
 class Logger {
     addLog(message) {
-        fs_1.default.appendFile("./logs/logs.txt", '\n\n[' + new Date() + ']\n' + message, (err) => { });
+        fs_1.default.appendFile("./logger/logs.txt", '\n\n[' + new Date() + ']\n' + message, (err) => { });
     }
     catcherErr(tryFunc, endFunc) {
         try {

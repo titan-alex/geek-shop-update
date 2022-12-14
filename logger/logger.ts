@@ -3,7 +3,7 @@ import { Request } from 'express';
 
 export class Logger{
     addLog(message: string | String ): void{
-        fs.appendFile("./logs/logs.txt", '\n\n[' + new Date() + ']\n' + message, (err) => {})
+        fs.appendFile("./logger/logs.txt", '\n\n[' + new Date() + ']\n' + message, (err) => {})
     }
     
     catcherErr(tryFunc: Function, endFunc?: Function){

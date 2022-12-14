@@ -20,7 +20,7 @@ async index(req: Request, res: Response) {
             auth: req.session.auth,
             name: req.session.name,
         });
-    }
+    } 
     async register(req: Request, res: Response) {
         res.render('auth', {
             auth: req.session.auth,

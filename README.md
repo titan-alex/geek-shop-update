@@ -23,7 +23,4 @@
 Содержание таблицы category
 
     Anime   anime.jpg   category    /anime
-
-
-https://www.npmjs.com/package/typescript-cookie
     
