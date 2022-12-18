@@ -121,7 +121,8 @@ class sessionController {
     ;
     logout(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield (0, addLog_1.addLog)(`${ip.address()} is logout from account ${req.session.name}`);
+            let name = req.session.name;
+            yield (0, addLog_1.addLog)(`${ip.address()} is logout from account ${name}`);
             req.session.auth = false;
             req.session.name = undefined;
             res.redirect("/");

@@ -94,8 +94,9 @@ export class sessionController {
     };
 
     async logout(req: Request, res: Response) {
+        let name = req.session.name
         await addLog(
-            `${ip.address()} is logout from account ${req.session.name}`
+            `${ip.address()} is logout from account ${name}`
         );
         req.session.auth = false;
         req.session.name = undefined;
