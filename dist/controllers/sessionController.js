@@ -38,104 +38,93 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.sessionController = void 0;
 const client_1 = require("@prisma/client");
 const md5_1 = __importDefault(require("md5"));
-const logger_1 = require("../logger/logger");
 const ip = __importStar(require("ip"));
 const functions_1 = require("../functions");
+const addLog_1 = require("../logger/addLog");
 const prisma = new client_1.PrismaClient();
-const logger = new logger_1.Logger();
 class sessionController {
     registration(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            logger.catcherErr(() => {
-                res.render("auth", (0, functions_1.renderObject)(req, {
-                    'error': ""
-                }));
-            });
+            res.render("auth", (0, functions_1.renderObject)(req, {
+                'error': ""
+            }));
         });
     }
     ;
     login(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            logger.catcherErr(() => __awaiter(this, void 0, void 0, function* () {
+            const data = yield prisma.users.findFirst({
+                where: {
+                    name: req.body.name
+                }
+            });
+            if (data != null) {
+                if ((0, md5_1.default)(String([req.body.password])) == String(data.password)) {
+                    req.session.auth = true;
+                    req.session.name = [req.body.name][0];
+                    (0, addLog_1.addLog)((`${ip.address()} is login on account ${req.session.name}`));
+                    res.redirect("/");
+                }
+                else {
+                    (0, addLog_1.addLog)(`${ip.address()} is error logining on account ${req.session.name}. error: password is not correct`);
+                    res.render("auth", (0, functions_1.renderObject)(req, {
+                        'error': "Password is not correct"
+                    }));
+                }
+            }
+            else {
+                res.render("auth", {
+                    error: "The user does not exist",
+                    auth: req.session.auth,
+                    name: req.session.name,
+                });
+            }
+        });
+    }
+    ;
+    register(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (req.body.name == "" || req.body.password == "" || req.body.email == "") {
+                (0, addLog_1.addLog)(`${ip.address()} is error registering on account ${req.session.name}. error: the field cannot be empty`);
+                res.render('register', (0, functions_1.renderObject)(req, {
+                    'error': "The field cannot be empty"
+                }));
+            }
+            else {
                 const data = yield prisma.users.findFirst({
                     where: {
                         name: req.body.name
                     }
                 });
                 if (data != null) {
-                    if ((0, md5_1.default)(String([req.body.password])) == String(data.password)) {
-                        req.session.auth = true;
-                        req.session.name = [req.body.name][0];
-                        // logger.addLog(
-                        //     tg.sendMessage(`${ip.address()} is login on account ${req.session.name}`)
-                        // );
-                        res.redirect("/");
-                    }
-                    else {
-                        logger.addLog(`${ip.address()} is error logining on account ${req.session.name}. error: password is not correct`);
-                        res.render("auth", (0, functions_1.renderObject)(req, {
-                            'error': "Password is not correct"
-                        }));
-                    }
-                }
-                else {
-                    res.render("auth", {
-                        error: "The user does not exist",
-                        auth: req.session.auth,
-                        name: req.session.name,
-                    });
-                }
-            }));
-        });
-    }
-    ;
-    register(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            logger.catcherErr(() => __awaiter(this, void 0, void 0, function* () {
-                if (req.body.name == "" || req.body.password == "" || req.body.email == "") {
-                    logger.addLog(`${ip.address()} is error registering on account ${req.session.name}. error: the field cannot be empty`);
-                    res.render('register', (0, functions_1.renderObject)(req, {
-                        'error': "The field cannot be empty"
+                    (0, addLog_1.addLog)(`${ip.address()} is error registering on account ${req.session.name}. error: name already taken`);
+                    res.render('auth', (0, functions_1.renderObject)(req, {
+                        'error': "Username already taken"
                     }));
                 }
                 else {
-                    const data = yield prisma.users.findFirst({
-                        where: {
-                            name: req.body.name
+                    (0, addLog_1.addLog)(`${ip.address()} is registering on account ${req.session.name}`);
+                    yield prisma.users.create({
+                        data: {
+                            name: req.body.name,
+                            password: (0, md5_1.default)(String(req.body.password)),
+                            email: req.body.email
                         }
                     });
-                    if (data != null) {
-                        logger.addLog(`${ip.address()} is error registering on account ${req.session.name}. error: name already taken`);
-                        res.render('auth', (0, functions_1.renderObject)(req, {
-                            'error': "Username already taken"
-                        }));
-                    }
-                    else {
-                        logger.addLog(`${ip.address()} is registering on account ${req.session.name}`);
-                        yield prisma.users.create({
-                            data: {
-                                name: req.body.name,
-                                password: (0, md5_1.default)(String(req.body.password)),
-                                email: req.body.email
-                            }
-                        });
-                        req.session.auth = true;
-                        req.session.name = [req.body.name][0];
-                        res.redirect('/');
-                    }
+                    req.session.auth = true;
+                    req.session.name = [req.body.name][0];
+                    res.redirect('/');
                 }
-            }));
+            }
         });
     }
     ;
     logout(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            logger.catcherErr(() => __awaiter(this, void 0, void 0, function* () {
-                yield logger.addLog(`${ip.address()} is logout from account ${req.session.name}`);
-                req.session.auth = false;
-                req.session.name = undefined;
-                res.redirect("/");
-            }));
+            yield (0, addLog_1.addLog)(`${ip.address()} is logout from account ${req.session.name}`);
+            req.session.auth = false;
+            req.session.name = undefined;
+            res.redirect("/");
         });
     }
     ;
