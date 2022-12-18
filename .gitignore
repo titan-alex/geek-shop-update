@@ -2,5 +2,6 @@ node_modules
 .env
 prisma/migrations
 logger/*.txt
+logger/chat_ids.ts
 dist/logger/*
 dist/controllers/*

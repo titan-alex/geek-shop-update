@@ -4,10 +4,6 @@
 
     npm install
 
-Создать файл .env в корневом каталоге и добавить конфигурацию БД
-
-    DATABASE_URL="mysql://root:secret@localhost:3306/database"
-
 Установить призму
 
     npm install prisma
