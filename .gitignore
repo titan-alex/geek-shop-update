@@ -7,4 +7,4 @@ dist/logger/*
 dist/controllers/*
 payment
 dist/payment
-  
+public/css/output.css
