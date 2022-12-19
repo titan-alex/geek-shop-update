@@ -2,71 +2,108 @@
 
 <%- include('particles/navigation.ejs') %>
 
-<div class="home">
-  <div class="home__baner">
-    <div class="home__inf">
-      <h1>OUR.GEEK.SHOP</h1>
-      <p>интернет-магазин</p>
-      <p> для настоящих гиков</p>
-      <a href="/catalog">Каталог</a>
+<div id="home" class="text-center bg-[#0c91c7] w-full">
+  <div id="home__baner" class="flex justify-evenly items-center pt-35">
+    <div id="home__inf" class="mb-0 font-gilroy">
+      <h1 class="font-bold size-2xl text-darkRed">OUR.GEEK.SHOP</h1>
+      <p class="size-xl">интернет-магазин</p>
+      <p class="size-xl"> для настоящих гиков</p>
+      <a href="/catalog" class="no-underline py-[4px] px-[15px] text-darkWhite size-[14px] leading-normal font-semibold rounded-[14px] bg-[#00c6e4] bg-center border-transparent border-solid  ">Каталог</a>
     </div>
-    <img src="./img/baner_home.png" alt="ERROR">
+    <img src="./img/baner_home.png" alt="ERROR" class="w-[230px] mt-[10px] ">
   </div>
 </div>
 
-<div class="mini">
-  <img src="./img/sticker1.png" alt="ERROR">
+<div id="mini" class="flex flex-row justify-evenly items-center text-center sixe-[23px] lh-[28px] my-[50px] mx-[0px] ">
+  <img src="./img/sticker1.png" alt="ERROR" class="object-cover h-[110px]">
   <p>Широкий ассортимент</p>
-  <img src="./img/sticker2.png" alt="ERROR">
+  <img src="./img/sticker2.png" alt="ERROR" class="object-cover h-[110px]">
   <p>Доставка по всей России</p>
 </div>
 
-<div class="product__menu">
-  <div class="new__products__title">
+<div id="product__menu" class="text-center mt-[20px]">
+  <div id="new__products__title" class="font-bold font-gilroy text-center w-full ">
     <h2>
       Меню категорий
       </h2>
   </div>
-  <div class="line"></div>
-  <div class="all__category">
-    <div class="all__product">
-      <!-- <img src="./img/all_product.png" alt="ERROR"> -->
-      <h3>Все товары</h3>
+  <div id="line" class=""></div>
+  <div id="all__category" class="my-[30px] mx-[40px] inline-block">
+    <div id="all__product" class="m-[20px] w-[290px] h-auto p-[10px] 
+    inline-flex bg-[#066bb3] justify-center
+    items-center text-center ">
+      <h3 class=" font-bold text-center my-[10px] mr-0 ml-[15px] font-gilroy ">Все товары</h3>
       <ul>
-        <li><a href="/anime">Аниме</a></li>
-        <li><a href="/games">Игры</a></li>
-        <li><a href="/cartoon">Мультфильмы</a></li>
-        <li><a href="/music">К-поп/Музыка</a></li>
-        <li><a href="/fanko_pop">Funko Pop</a></li>
-        <li><a href="/movies">Фильмы</a></li>
-        <li><a href="/clothes">Одежда</a></li>
+        <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
+          <a href="/anime ">Аниме</a>
+        </li>
+        <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
+          <a href="/games">Игры</a>
+        </li>
+        <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
+          <a href="/cartoon">Мультфильмы</a>
+        </li>
+        <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
+          <a href="/music">К-поп/Музыка</a>
+        </li>
+        <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
+          <a href="/fanko_pop">Funko Pop</a>
+        </li>
+        <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
+          <a href="/movies">Фильмы</a>
+        </li>
+        <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
+          <a href="/clothes">Одежда</a>
+        </li>
       </ul>
     </div>
-    <div class="cinema">
-      <h3>Кинемотограф</h3>
+    <div id="cinema" class="m-[20px] w-[290px] h-auto p-[10px] 
+    inline-flex bg-[#f28524] justify-center
+    items-center text-center ">
+      <h3 class=" font-bold text-center my-[10px] mr-0 ml-[15px] font-gilroy ">Кинемотограф</h3>
       <ul>
-        <li><a href="/anime">Аниме</a></li>
-        <li><a href="/cartoon">Мультфильмы</a></li>
-        <li><a href="/movies">Фильмы</a></li>
+        <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
+          <a href="/anime">Аниме</a>
+        </li>
+        <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
+          <a href="/cartoon">Мультфильмы</a>
+        </li>
+        <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
+          <a href="/movies">Фильмы</a>
+        </li>
       </ul>
     </div>
-    <div class="games">
-      <h3>Игры</h3>
+    <div id="games" class="m-[20px] w-[290px] h-auto p-[10px] 
+    inline-flex bg-[#a52391] justify-center
+    items-center text-center ">
+      <h3 class=" font-bold text-center my-[10px] mr-0 ml-[15px] font-gilroy ">Игры</h3>
       <ul>
-        <li><a href="/GenshinImpact">Genshin Impact</a></li>
+        <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
+          <a href="/GenshinImpact">Genshin Impact</a>
+        </li>
       </ul>
     </div>
-    <div class="clothes">
-      <h3>Одежда</h3>
+    <div id="clothes" class="m-[20px] w-[290px] h-auto p-[10px] 
+    inline-flex bg-[#00a760] justify-center
+    items-center text-center ">
+      <h3 class=" font-bold text-center my-[10px] mr-0 ml-[15px] font-gilroy ">Одежда</h3>
       <ul>
-        <li><a href="/clothes">Одежда</a></li>
+        <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
+          <a href="/clothes">Одежда</a>
+        </li>
       </ul>
     </div>
-    <div class="other">
-      <h3>Прочее</h3>
+    <div id="other" class="m-[20px] w-[290px] h-auto p-[10px] 
+    inline-flex bg-[#5d2f97] justify-center
+    items-center text-center ">
+      <h3 class=" font-bold text-center my-[10px] mr-0 ml-[15px] font-gilroy ">Прочее</h3>
       <ul>
-        <li><a href="/fanko_pop">Funko Pop</a></li>
-        <li><a href="/music">К-поп/Музыка</a></li>
+        <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
+          <a href="/fanko_pop">Funko Pop</a>
+        </li>
+        <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
+          <a href="/music">К-поп/Музыка</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -77,47 +114,15 @@
 
 
 
-<div class="new__products">
-  <div class="new__products__title">
+<div id="new__products" class="text-center mt-[20px]">
+  <div id="new__products__title" class="font-bold font-gilroy text-center w-full">
     <h2>
       <ion-icon name="flame"></ion-icon>Новинки <ion-icon name="flame"></ion-icon>
       </h3>
   </div>
-  <div class="line"></div>
-  <% for (let i = 0; i < all_products.length; i++) { %>
-  <div class="container">
-    <div class="product">
-      <div class="image">
-        <a href="<%= all_products[i].href %>/<%=  all_products[i].id %>">
-          <img class="container-img" src="img/product/<%= all_products[i].image %>" alt="ERROR"></a>
-      </div>
-      <div class="info">
-        <h3><%= all_products[i].title %></h3>
-
-        
-        <div class="info-price">
-          <span class="price"><%=  all_products[i].price %> <small>₽</small></span>
-
-
-          <form method="post" action="/cart_add" class="">
-            <input value="<%=  all_products[i].id %>" class="form-group__input" type="text" id="shopping-cart" name="shopping-cart" placeholder="" style="display: none;">
-            <input value="<%= name %>" class="form-group__input" type="text" id="name" name="name"  style="display: none">
-            <input value="<%=  all_products[i].id %>" class="form-group__input" type="text" id="article" name="article" placeholder="" style="display: none;">
-            <input value="<%=  all_products[i].href %>" class="form-group__input" type="text" id="href" name="href" placeholder="href" style="display: none;">
-            <input value="<%=  all_products[i].title %>" class="form-group__input" type="text" id="title" name="title" placeholder="title" style="display: none;">
-            <input value="<%=  all_products[i].description %>" class="form-group__input" type="text" id="description" name="description" placeholder="Описание" style="display: none;">
-            <input value="<%= all_products[i].category %>" class="form-group__input" type="text" id="category" name="category"  style="display: none">
-            <input value="<%=  all_products[i].image %>" class="form-group__input" type="text" id="image" name="image" placeholder="image" style="display: none;">
-            <input value="<%=  all_products[i].price %>" class="form-group__input" type="text" id="price" name="price" placeholder="price" style="display: none;">
-            <button class="product__buy" type="submit"><ion-icon name="basket"></ion-icon></button>
-          </form>
-        </div>
-        <!-- <p class="info-description"><%=  all_products[i].description %></p> -->
-      </div>
-    </div>
-
-  </div>
-  <% } %>
+  <div id="line" class=""></div>
+    <%- include('particles/productCard.ejs') %>
+  
 </div>
 
 

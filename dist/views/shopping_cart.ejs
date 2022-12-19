@@ -2,21 +2,21 @@
 
 <%- include('particles/navigation.ejs') %>
 
-<div class="catalog">
+<div id="catalog" class="text-center">
   <div class="catalog__head">
-    <div class="catalog__title">
-      <h2>Корзина</h3>
+    <div id="catalog__title" class="mt-0">
+      <h2 class="font-black">Корзина</h3>
     </div>
-    <div class="line"></div>
+    <div id="line" class="bg-black h-[4px] rounded-[4px] w-[70%] mt-[30px] mx-auto opacity-30"></div>
   </div>
 
   <% if(shopping_cart.length==0) { %>
-  <div class="empty__cart" id="cart">
-    <div class="empty__cart__image">
-      <ion-icon class="empty__cart__container-img" name="cart"></ion-icon>
+  <div class="m-[20px] w-[290px] inline-block" id="cart">
+    <div id="empty__cart__image" class="mb-[20px]">
+      <ion-icon id="empty__cart__container-img" name="cart" class="h-[250px] w-full object-cover raunded-[7px] opacity-40 "></ion-icon>
     </div>
     <div class="empty__cart__info">
-      <h3>Ваша корзина пуста</h3>
+      <h3 class="text-stone-200 font-black mt-[10px] text-[30px]">Ваша корзина пуста</h3>
     </div>
   </div>
   <% } %>

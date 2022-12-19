@@ -1,5 +1,5 @@
 @media (max-width: 1920px) {
-    .mini img {
+    #mini img {
         height: 110px;
     }
 }
@@ -43,77 +43,77 @@
         display: none;
     }
 
-    .left__box {
+    #left__box {
         float: none;
         margin: 0px;
         font-size: medium;
     }
 
-    .right__box {
+    #right__box {
         float: none;
         margin: 0px;
         font-size: medium;
     }
 
-    .catalog__baner {
+    #catalog__baner {
         display: inline-block;
     }
 
-    .catalog__baner h1 {
+    #catalog__baner h1 {
         font-size: x-large;
         margin-bottom: 20px;
     }
 
-    .home {
+    #home {
         text-align: center;
         padding: 0px;
     }
 
-    .home__baner {
+    #home__baner {
         display: inline-block;
     }
 
-    .mini {
+    #mini {
         display: block;
     }
-    .mini img{
+    #mini img{
         width: auto;
     }
 
-    .all__product {
+    #all__product {
         display: none;
     }
 
-    .all__category {
+    #all__category {
         margin: 0;
     }
 
-    .all__product,
-    .cinema,
-    .games,
-    .clothes,
-    .other {
+    #all__product,
+    #cinema,
+    #games,
+    #clothes,
+    #other {
         margin: 13px;
     }
 
-    .home__inf h1 {
+    #home__inf h1 {
         margin-top: 20px;
     }
 
-    .section__all {
+    #section__all {
         display: block;
     }
 
-    .section__left__box img {
+    #section__left__box img {
         width: 256px;
     }
-    .container-img{
+    #container-img{
         height: auto;
     }
-    .container{
+    #container{
         width: 190px;
     }
-    .info h3{
+    #info h3{
         font-size: medium;
     }
 }
@@ -121,7 +121,7 @@
 
 
 @media (max-width: 500px) {
-    .section__description {
+    #section__description {
         width: 90%;
     }
 
@@ -135,7 +135,7 @@
         display: inline-block;
     }
 
-    .contacts__text {
+    #contacts__text {
         width: 90%;
     }
 

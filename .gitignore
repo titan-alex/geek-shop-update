@@ -5,3 +5,6 @@ logger/*.txt
 logger/chat_ids.ts
 dist/logger/*
 dist/controllers/*
+payment
+dist/payment
+  
