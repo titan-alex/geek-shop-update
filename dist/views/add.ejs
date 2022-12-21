@@ -2,49 +2,49 @@
 
 <%- include('particles/navigation.ejs') %>
 
-<form action="/product_add" method="post" class="form_group_all">
-  <div class="form-group">
-    <label class="form-group__label" for="title">Заголовок</label>
-    <input value="" class="form-group__input" type="text" id="title" name="title" placeholder="title">
+<form action="/product_add" method="post" id="form_group_all" class="ml-auto mr-auto bg-black text-center w-full">
+  <div id="form-group" class="mb-[20px]">
+    <label id="form-group__label" class="block mb-[3px] text-white font-bold tracking-[3.5px]" for="title">Заголовок</label>
+    <input value="" id="form-group__input" class="p-[7px]" type="text" id="title" name="title" placeholder="title">
   </div>
 
-  <div class="form-group">
-    <label class="form-group__label" for="image">Картинка</label>
-    <input value="" class="form-group__input" type="text" id="image" name="image" placeholder="image">
+  <div id="form-group" class="mb-[20px]">
+    <label id="form-group__label" class="block mb-[3px] text-white font-bold tracking-[3.5px]" for="image">Картинка</label>
+    <input value="" id="form-group__input" class="p-[7px]" type="text" id="image" name="image" placeholder="image">
   </div>
 
-  <div class="form-group">
-    <label class="form-group__label" for="description">Описание</label>
-    <input value="" class="form-group__input" type="text" id="description" name="description" placeholder="description">
+  <div id="form-group" class="mb-[20px]">
+    <label id="form-group__label" class="block mb-[3px] text-white font-bold tracking-[3.5px]" for="description">Описание</label>
+    <input value="" id="form-group__input" class="p-[7px]" type="text" id="description" name="description" placeholder="description">
   </div>
 
-  <div class="form-group">
-    <label class="form-group__label" for="price">Цена</label>
-    <input value="" class="form-group__input" type="text" id="price" name="price" placeholder="price">
+  <div id="form-group" class="mb-[20px]">
+    <label id="form-group__label" class="block mb-[3px] text-white font-bold tracking-[3.5px]" for="price">Цена</label>
+    <input value="" id="form-group__input" class="p-[7px]" type="text" id="price" name="price" placeholder="price">
   </div>
 
-  <div class="form-group">
-    <label class="form-group__label" for="category">Категория</label>
-    <input value="" class="form-group__input" type="text" id="category" name="category" placeholder="category">
+  <div id="form-group" class="mb-[20px]">
+    <label id="form-group__label" class="block mb-[3px] text-white font-bold tracking-[3.5px]" for="category">Категория</label>
+    <input value="" id="form-group__input" class="p-[7px]" type="text" id="category" name="category" placeholder="category">
   </div>
 
-  <div class="form-group">
-    <label class="form-group__label" for="href">Путь</label>
-    <input value="" class="form-group__input" type="text" id="href" name="href" placeholder="href">
+  <div id="form-group" class="mb-[20px]">
+    <label id="form-group__label" class="block mb-[3px] text-white font-bold tracking-[3.5px]" for="href">Путь</label>
+    <input value="" id="form-group__input" class="p-[7px]" type="text" id="href" name="href" placeholder="href">
   </div>
 
-  <input class="form-button" type="submit" value="Добавить">
+  <input id="form-button" class="text-white p-[7px] bg-blue m-[20px] hover: cursor-pointer" type="submit" value="Добавить">
 
 
 </form>
 
-<form method="post" action="/product_del" class="form_group_all">
-  <div class="form-group">
-    <label class="form-group__label" for="id">Id</label>
-    <input value="" class="form-group__input" type="text" id="id" name="id" placeholder="Id">
+<form method="post" action="/product_del" id="form_group_all" class="ml-auto mr-auto bg-black text-center w-full">
+  <div id="form-group" class="mb-[20px]">
+    <label id="form-group__label" class="block mb-[3px] text-white font-bold tracking-[3.5px]" for="id">Id</label>
+    <input value="" id="form-group__input" class="p-[7px]" type="text" id="id" name="id" placeholder="Id">
   </div>
 
-  <input class="form-button-delete" type="submit" value="Удалить">
+  <input id="form-button-delete" class=" m-[20px] text-white p-[7px] bg-red hover: cursor-pointer" type="submit" value="Удалить">
 </form>
 
 <!-- <form class="form_group_all" method="post" action="/upload" enctype="multipart/form-data">

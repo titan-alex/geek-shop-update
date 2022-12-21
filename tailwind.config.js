@@ -10,16 +10,14 @@ module.exports = {
   },
   colors:{
     'darkRed':'#c50d2a',
+    'red': '#ff0000',
     'darkWhite': '#fdfffc',
-    'darkGreen': 'rgb(27, 71, 27)'
+    'darkGreen': 'rgb(27, 71, 27)',
+    'blue' : '#0000ff',
+    'white': '#ffffff',
+    'black': '#000000',
   },
 
   },
-  plugins:[
-    plugin(function({ addUtilities, addComponents, e, config }) {
-      'm-[20px]', 'w-[290px]', 'h-auto', 'p-[10px]', 
-      'inline-flex', 'bg-[#066bb3]', 'justify-center',
-      'align-center', 'text-center' 
-    }),
-  ]
+  plugins:[]
 }

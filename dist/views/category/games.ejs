@@ -2,22 +2,21 @@
 
 <%- include('../particles/navigation.ejs') %>
 
-<div class="catalog">
+<div id="catalog" class="text-center ">
   <div class="catalog__head">
-    <div class="catalog__title">
-      <h2>Игры</h3>
+    <div id="catalog__title" class="mt-0">
+      <h2 class="font-black ">Игры</h2>
     </div>
-    <div class="line"></div>
+    <div id="line" class="bg-black h-[4px] rounded w-[70%] mt-[30px] opacity-30 mx-auto "></div>
   </div>
   <% for (let i = 0; i < games.length; i++) { %>
-  <div class="container">
-    <div class="product">
-      <div class="image">
+    <div id="container" class="m-[20px] w-[290px] p-[20px] inline-block">
+      <div id="image" class="mb-[10px]">
         <a href="<%= games[i].href %>">
-          <img class="container-img" src="img/category/Games/<%= games[i].image %>" alt="ERROR"></a>
+          <img id="container-img" class="h-[250px] w-full object-cover rounded" src="img/category/Games/<%= games[i].image %>" alt="ERROR"></a>
       </div>
       <div class="info">
-        <h3><%= games[i].title %></h3>
+        <h3 class="text-[21px] font-bold mb-0"><%= games[i].title %></h3>
       </div>
     </div>
 

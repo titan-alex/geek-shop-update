@@ -5,9 +5,18 @@
 p{
   font-size: 18px;
 }
+h1{
+  font-size: 32px;
+}
+h2{
+  font-size: 24px;
+}
+ion-icon{
+  font-size: 33px;
+}
 
  /* CATALOG */
-.catalog{
+/* .catalog{
   
   text-align: center;
   
@@ -43,54 +52,54 @@ p{
   opacity: 0.3;
   margin-left: auto;
   margin-right: auto;
-}
+} */
  
 
 /* SECTION */
-  .section {
+  /* .section {
     padding: 20px;
     text-align: center;  
-  }
-  .section__all{
+  } */
+  /* .section__all{
     display: flex;
-  }
-  .section__left__box{
+  } */
+  /* .section__left__box{
     
     display: inline-block;
-  }
-  .section__left__box img {
+  } */
+  /* .section__left__box img {
     border-radius: 8px;
     width: 400px;
-  }
-  .section__right__box{
+  } */
+  /* .section__right__box{
     display: inline-block;
-  }
-  .section__inf__item{
+  } */
+  /* .section__inf__item{
     text-align: left;
     margin: 0 0 0 30px;
-  }
-  .section__inf__item, h2, p{
+  } */
+  /* .section__inf__item, h2, p{
     margin-bottom: 20px;
-  }
-  .section__price{
+  } */
+  /* .section__price{
     font-size: 18px;
     font-weight: bold;
-  }
-  .section__inf__item span{
+  } */
+  /* .section__inf__item span{
     font-weight: 700;
     font-size: 18px;
-  }
-  .section__inf__item h2 {
+  } */
+  /* .section__inf__item h2 {
     margin-top: 0;
     
-  }
-  .section__inf__item p{
+  } */
+  /* .section__inf__item p{
     width: 70%;
    
-  }
+  } */
 
 /* CONTAINER */
-.container{
+/* .container{
   margin: 20px;
   width: 290px;
   padding: 20px;
@@ -139,8 +148,8 @@ p{
   background-color: rgb(27, 71, 27);
   color: white;
   border-radius: 10px;
-}
-.product__buy{
+} */
+/* .product__buy{
  border: none;
  background-color: white;
 }
@@ -148,74 +157,14 @@ p{
   color: black;
   font-size: 33px;
  
- }
-.price{
+ } */
+/* .price{
   font-weight: 700;
   font-size: 18px;
-}
-
-
-/* FORM */
-.form__user{
-  background-color: black;
-  text-align: center;
-  width: 100%;
-}
-.form_auth{
- margin: 20px;
-}
-.form_auth_all{
-  display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-}
-.form_group_all{
- margin-left: auto;
- margin-right: auto;
- background-color: black;
-  text-align: center;
-  width: 100%;
-}
-
-.form-group {
-  margin-bottom: 20px;
-}
-
-.form-group__label {
-  display: block;
-  margin-bottom: 3px;
-  color: white;
-  font-weight: Bold;
-  letter-spacing: 3.5px;
-}
-
-.form-group__input {
-  padding: 7px;
-}
-
-.form-button {
-  color: white;
-  padding: 7px;
-  background-color: blue;
-  margin: 20px 20px;
-}
-
-.form-button:hover {
-  cursor: pointer;
-}
-.form-button-delete {
-  color: white;
-  padding: 7px;
-  background-color: red;
-}
-
-.form-button-delete:hover {
-  cursor: pointer;
-}
+} */
 
 /*CONTACTS*/
-.contacts__wrapper{
+/* .contacts__wrapper{
 	background-color: #434242;
 	height: auto;
 	display: flex;
@@ -284,4 +233,4 @@ p{
 .foot__li:hover{
 	color:white;
 	filter: brightness(0) invert(1);
-}
+} */

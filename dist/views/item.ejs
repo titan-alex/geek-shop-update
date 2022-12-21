@@ -2,67 +2,35 @@
 
 <%- include('particles/navigation.ejs') %>
 
-<div class="section">
-  <div class="section__all">
-    <div class="section__left__box">
-      <img src="/img/product/<%= all_products.image %>" alt="ERROR">
+<div id="section" class="p-[20px] text-center">
+  <div id="section__all" class="flex">
+    <div id="section__left__box" class="inline-block">
+      <img class="rounded-lg w-[400px]" src="/img/product/<%= all_products.image %>" alt="ERROR">
     </div>
-    <div class="section__right__box">
-      <div class="section__inf__item">
-        <h2>
+    <div id="section__right__box" class="inline-block">
+      <div id="section__inf__item" class="text-left  ml-[30px]">
+        <h2 class="mb-[20px] mt-0 font-bold text-[24px]">
           <%= all_products.title %>
         </h2>
-        <div class="section__price">
-          <p><%= all_products.price %> <small>₽</small></p>
+        <div id="section__price" class="text-[18px] font-bold">
+          <p class="mb-[20px] w-[70%]"><%= all_products.price %> <small>₽</small></p>
         </div>
-        <p><%= all_products.description %></p>
+        <p class="mb-[20px] w-[70%]"><%= all_products.description %></p>
         <form method="post" action="/cart_add" class="">
-          <input value="<%= all_products.id %>" class="form-group__input" type="text" id="shopping-cart" name="shopping-cart"  style="display: none">
-          <input value="<%= name %>" class="form-group__input" type="text" id="name" name="name"  style="display: none">
-          <input value="<%= all_products.title %>" class="form-group__input" type="text" id="title" name="title" style="display: none">
-          <input value="<%= all_products.image %>" class="form-group__input" type="text" id="image" name="image" style="display: none">
-          <input value="<%= all_products.description %>" class="form-group__input" type="text" id="description" name="description"  style="display: none">
-          <input value="<%= all_products.price %>" class="form-group__input" type="text" id="price" name="price" style="display: none">
-          <input value="<%= all_products.category %>" class="form-group__input" type="text" id="category" name="category"  style="display: none">
-          <input value="<%= all_products.href %>" class="form-group__input" type="text" id="href" name="href"  style="display: none">   
-          <input value="<%=  all_products.id %>" class="form-group__input" type="text" id="article" name="article" style="display: none;">
+          <input value="<%= all_products.id %>" type="text" id="shopping-cart" name="shopping-cart"  style="display: none">
+          <input value="<%= name %>" type="text" id="name" name="name"  style="display: none">
+          <input value="<%= all_products.title %>" type="text" id="title" name="title" style="display: none">
+          <input value="<%= all_products.image %>" type="text" id="image" name="image" style="display: none">
+          <input value="<%= all_products.description %>" type="text" id="description" name="description"  style="display: none">
+          <input value="<%= all_products.price %>" type="text" id="price" name="price" style="display: none">
+          <input value="<%= all_products.category %>" type="text" id="category" name="category"  style="display: none">
+          <input value="<%= all_products.href %>" type="text" id="href" name="href"  style="display: none">   
+          <input value="<%=  all_products.id %>" type="text" id="article" name="article" style="display: none;">
        
-          <button class="product__buy" type="submit"><ion-icon name="basket"></ion-icon></button>
+          <button id="product__buy" class="rounded-0 bg-white" type="submit"><ion-icon class="text-black text-[33px]" name="basket"></ion-icon></button>
         </form>
       </div>
     </div>
   </div>
 </div>
-
-
-<% if(auth){%>
-<div class="form__user">
-  <form action="/update" method="post" class="form_group_all">
-    <div class="form-group">
-      <label class="form-group__label" for="title">Заголовок</label>
-      <input value="<%= all_products.title %>" class="form-group__input" type="text" id="title" name="title" placeholder="title">
-    </div>
-
-    <div class="form-group">
-      <label class="form-group__label" for="title">Описание</label>
-      <input value="<%= all_products.description %>" class="form-group__input" type="text" id="description" name="description" placeholder="Описание">
-    </div>
-
-    <div class="form-group">
-      <label class="form-group__label" for="image">Картинка</label>
-      <input value="<%= all_products.image %>" class="form-group__input" type="text" id="image" name="image" placeholder="image">
-    </div>
-    <input value="<%= all_products.id %>" class="form-group__input" type="text" id="id" name="id" placeholder="" style="display: none;">
-    <input class="form-button" type="submit" value="Обновить">
-
-
-  </form>
-
-  <form method="post" action="/item-delete" class="form_group_all">
-    <input value="<%= all_products.id %>" class="form-group__input" type="text" id="id" name="id" placeholder="" style="display: none;">
-    <input class="form-button-delete" type="submit" value="Удалить">
-  </form>
-
-</div>
-<% } %>
 <%- include('particles/footer.ejs') %>

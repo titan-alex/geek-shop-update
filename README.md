@@ -20,3 +20,6 @@
 
     Anime   anime.jpg   category    /anime
     
+Запуск tailwindcss
+
+    npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch
