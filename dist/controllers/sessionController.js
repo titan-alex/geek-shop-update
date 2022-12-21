@@ -103,7 +103,6 @@ class sessionController {
                     }));
                 }
                 else {
-                    (0, addLog_1.addLog)(`${ip.address()} is registering on account ${req.session.name}`);
                     yield prisma.users.create({
                         data: {
                             name: req.body.name,
@@ -114,6 +113,7 @@ class sessionController {
                     req.session.auth = true;
                     req.session.name = [req.body.name][0];
                     res.redirect('/');
+                    (0, addLog_1.addLog)(`${ip.address()} is registering on account ${req.session.name}`);
                 }
             }
         });

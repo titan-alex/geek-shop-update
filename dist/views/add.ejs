@@ -2,7 +2,10 @@
 
 <%- include('particles/navigation.ejs') %>
 
+
 <form action="/product_add" method="post" id="form_group_all" class="ml-auto mr-auto bg-black text-center w-full">
+  <h1 id="contacts__header" class="text-white font-roboto text-center font-bold">Добавить товар</h1>
+
   <div id="form-group" class="mb-[20px]">
     <label id="form-group__label" class="block mb-[3px] text-white font-bold tracking-[3.5px]" for="title">Заголовок</label>
     <input value="" id="form-group__input" class="p-[7px]" type="text" id="title" name="title" placeholder="title">
@@ -39,6 +42,8 @@
 </form>
 
 <form method="post" action="/product_del" id="form_group_all" class="ml-auto mr-auto bg-black text-center w-full">
+  <h1 id="contacts__header" class="text-white font-roboto text-center font-bold">Удалить товар</h1>
+
   <div id="form-group" class="mb-[20px]">
     <label id="form-group__label" class="block mb-[3px] text-white font-bold tracking-[3.5px]" for="id">Id</label>
     <input value="" id="form-group__input" class="p-[7px]" type="text" id="id" name="id" placeholder="Id">

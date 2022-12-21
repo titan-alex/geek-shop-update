@@ -76,19 +76,20 @@ export class sessionController {
                         'error': "Username already taken"
                     }));
             } else {
-                addLog(
-                    `${ip.address()} is registering on account ${req.session.name}`
-                );
+                
                 await prisma.users.create({
                     data: {
                         name: req.body.name,
                         password: md5(String(req.body.password)),
                         email: req.body.email
                     }
-                });
+                });               
                 req.session.auth = true;
                 req.session.name = [req.body.name][0];
                 res.redirect('/');
+                addLog(
+                    `${ip.address()} is registering on account ${req.session.name}`
+                );
             }
         }
     };

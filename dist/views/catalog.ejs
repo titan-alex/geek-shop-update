@@ -30,6 +30,8 @@
 </div>
 <% if(name == 'Titan Alex'){%>
 <form action="/store" method="post" id="form_group_all" class="ml-auto mr-auto bg-black text-center w-full">
+  <h1 id="contacts__header" class="text-white font-roboto text-center font-bold">Добавить категорию</h1>
+
   <div id="form-group" class="mb-[20px]">
     <label id="form-group__label" class="block mb-[3px] text-white font-bold tracking-[3.5px]" for="title">Заголовок</label>
     <input value="" id="form-group__input" class="p-[7px]" type="text" id="title" name="title" placeholder="title">
@@ -57,6 +59,8 @@
 </form>
 
 <form method="post" action="/delete" id="form_group_all" class="ml-auto mr-auto bg-black text-center w-full">
+  <h1 id="contacts__header" class="text-white font-roboto text-center font-bold">Удалить категорию</h1>
+
   <div id="form-group" class="mb-[20px]">
     <label id="form-group__label" class="block mb-[3px] text-white font-bold tracking-[3.5px]" for="title">Id</label>
     <input value="" id="form-group__input" class="p-[7px]" type="text" id="id" name="id" placeholder="Id">

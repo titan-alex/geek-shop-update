@@ -1,5 +1,9 @@
 import { Request, Response } from 'express';
 import { category, PrismaClient } from '@prisma/client';
+import { Logger } from "../logger/logger";
+import * as ip from 'ip';
+import { renderObject } from '../functions';
+import { addLog } from '../logger/addLog';
 
 const prisma: PrismaClient = new PrismaClient();
 
@@ -30,6 +34,11 @@ export class categoryController {
                 typ
             }
         });
+        addLog(
+            `${req.session.name} added new category: "${req.body.title}" 
+            type: ${req.body.typ}
+            ip: ${ip.address()}`
+        );
 
         res.redirect('/catalog');
     }
@@ -42,6 +51,10 @@ export class categoryController {
                 id: Number(id)
             }
         });
+        addLog(
+            `${req.session.name} deleted category: "${req.body.id}" 
+            ip: ${ip.address()}`
+        );
 
         res.redirect('/catalog');
     }

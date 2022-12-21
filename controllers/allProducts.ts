@@ -1,5 +1,9 @@
 import { Request, Response } from 'express';
 import { all_products, PrismaClient } from '@prisma/client';
+import { Logger } from "../logger/logger";
+import * as ip from 'ip';
+import { renderObject } from '../functions';
+import { addLog } from '../logger/addLog';
 
 const prisma: PrismaClient = new PrismaClient();
 
@@ -19,8 +23,13 @@ export class allProducts {
                 
             }
         });
+        addLog(
+            `${req.session.name} added new product: ${req.body.title} 
+            category: ${req.body.category}
+            ip: ${ip.address()}`
+        );
 
-        res.redirect('/');
+        res.redirect('/add');
     }
 
     async product_del(req: Request, res: Response) {
@@ -31,8 +40,12 @@ export class allProducts {
                 id: Number(id)
             }
         });
+        addLog(
+            `${req.session.name} deleted product: "${req.body.id}" 
+            ip: ${ip.address()}`
+        );
 
-        res.redirect('/');
+        res.redirect('/add');
     }
 
 
