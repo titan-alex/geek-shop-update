@@ -5,6 +5,7 @@ import { Logger } from "../logger/logger";
 import * as ip from 'ip';
 import { renderObject } from '../functions';
 import { addLog } from '../logger/addLog';
+import bcrypt from "bcrypt";
 
 
 const prisma: PrismaClient = new PrismaClient();
@@ -25,7 +26,8 @@ export class sessionController {
             }
         });
         if (data != null) {
-            if (md5(String([req.body.password])) == String(data.password)) {
+            const password = req.body.password;
+            if ( bcrypt.compareSync(password, data.password)) {
                 req.session.auth = true;
                 req.session.name = [req.body.name][0];
                 addLog(
@@ -76,14 +78,15 @@ export class sessionController {
                         'error': "Username already taken"
                     }));
             } else {
-                
+                const saltRounds = 10;
+                const password = req.body.password;
                 await prisma.users.create({
                     data: {
                         name: req.body.name,
-                        password: md5(String(req.body.password)),
+                        password: bcrypt.hashSync(password, saltRounds),               
                         email: req.body.email
                     }
-                });               
+                });             
                 req.session.auth = true;
                 req.session.name = [req.body.name][0];
                 res.redirect('/');

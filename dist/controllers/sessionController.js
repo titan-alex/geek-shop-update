@@ -37,10 +37,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sessionController = void 0;
 const client_1 = require("@prisma/client");
-const md5_1 = __importDefault(require("md5"));
 const ip = __importStar(require("ip"));
 const functions_1 = require("../functions");
 const addLog_1 = require("../logger/addLog");
+const bcrypt_1 = __importDefault(require("bcrypt"));
 const prisma = new client_1.PrismaClient();
 class sessionController {
     registration(req, res) {
@@ -59,7 +59,8 @@ class sessionController {
                 }
             });
             if (data != null) {
-                if ((0, md5_1.default)(String([req.body.password])) == String(data.password)) {
+                const password = req.body.password;
+                if (bcrypt_1.default.compareSync(password, data.password)) {
                     req.session.auth = true;
                     req.session.name = [req.body.name][0];
                     (0, addLog_1.addLog)((`${ip.address()} is login on account ${req.session.name}`));
@@ -103,10 +104,12 @@ class sessionController {
                     }));
                 }
                 else {
+                    const saltRounds = 10;
+                    const password = req.body.password;
                     yield prisma.users.create({
                         data: {
                             name: req.body.name,
-                            password: (0, md5_1.default)(String(req.body.password)),
+                            password: bcrypt_1.default.hashSync(password, saltRounds),
                             email: req.body.email
                         }
                     });
