@@ -23,3 +23,7 @@
 Запуск tailwindcss
 
     npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch
+
+Примечание:
+
+    В файле output.css уберите дефолтное значение display на 400 строчке
