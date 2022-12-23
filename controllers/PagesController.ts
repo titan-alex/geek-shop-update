@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
-import { all_products, category, shopping_cart, PrismaClient } from '@prisma/client';
+import { all_products, categories, shopping_cart, PrismaClient } from '@prisma/client';
 
 
 const prisma: PrismaClient = new PrismaClient();
 
-export class pageController {
+export class PagesController {
 
 async index(req: Request, res: Response) {
         const all_products: all_products[] = await prisma.all_products.findMany();
@@ -14,6 +14,7 @@ async index(req: Request, res: Response) {
             auth: req.session.auth,
             name: req.session.name,
         });
+        console.log(all_products)
     }
     async about_us(req: Request, res: Response) {
         res.render('about-us', {

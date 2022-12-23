@@ -34,7 +34,7 @@
           <span id="price" class="font-bold text-[18px]"><%= shopping_cart[i].price %> <small>₽</small></span>
           <!-- <button class="add-to-cart"><ion-icon name="cart-outline"></ion-icon></button> -->
 
-          <form method="post" action="/cart_add">
+          <form method="post" action="/cart-add">
             <input value="<%= shopping_cart[i].id %>"  type="text" id="shopping-cart" name="shopping-cart"  style="display: none;">
             <input value="<%= shopping_cart[i].title %>"  type="text" id="title" name="title" style="display: none;">
             <input value="<%= shopping_cart[i].description %>"  type="text" id="description" name="description" style="display: none;">
@@ -43,7 +43,7 @@
             <button id="product__buy" class="rounded-0 bg-white" type="submit"><ion-icon class=" text-white text-[33px]" name="basket"></ion-icon></button>
           </form>
 
-          <form method="post" action="/cart_del" >
+          <form method="post" action="/cart-del" >
             <input value="<%= shopping_cart[i].id %>"  type="text" id="id" name="id"  style="display: none;">
             <button id="product__buy" class="rounded-0 bg-white" type="submit"><ion-icon class=" text-white text-[33px]" name="trash"></ion-icon></button>
           </form>

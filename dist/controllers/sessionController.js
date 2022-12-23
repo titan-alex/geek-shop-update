@@ -35,14 +35,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sessionController = void 0;
+exports.SessionController = void 0;
 const client_1 = require("@prisma/client");
 const ip = __importStar(require("ip"));
 const functions_1 = require("../functions");
 const addLog_1 = require("../logger/addLog");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const prisma = new client_1.PrismaClient();
-class sessionController {
+class SessionController {
     registration(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             res.render("auth", (0, functions_1.renderObject)(req, {
@@ -133,5 +133,5 @@ class sessionController {
     }
     ;
 }
-exports.sessionController = sessionController;
+exports.SessionController = SessionController;
 ;

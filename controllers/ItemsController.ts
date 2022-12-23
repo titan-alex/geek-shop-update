@@ -7,10 +7,10 @@ import { addLog } from '../logger/addLog';
 
 const prisma: PrismaClient = new PrismaClient();
 
-export class allProducts {
+export class ItemsController {
 
-    async product_add(req: Request, res: Response) {
-        const { title, image, description, price, category, href} = req.body;
+    async productAdd(req: Request, res: Response) {
+        const { title, image, description, price, type_id, href_id} = req.body;
 
         await prisma.all_products.create({
             data: {
@@ -18,8 +18,8 @@ export class allProducts {
                 image,
                 description,
                 price,
-                category,
-                href,
+                href_id,
+                type_id,
                 
             }
         });
@@ -32,7 +32,7 @@ export class allProducts {
         res.redirect('/add');
     }
 
-    async product_del(req: Request, res: Response) {
+    async productDel(req: Request, res: Response) {
         const { id } = req.body;
 
         await prisma.all_products.delete({
@@ -53,7 +53,7 @@ export class allProducts {
     async genshin(req: Request, res: Response) {
         const all_products: all_products[] = await prisma.all_products.findMany({
             where:{
-                category: String('genshinimpact'), 
+                type_id: 4, 
             }
         });
         res.render('catalog/games/GenshinImpact', {

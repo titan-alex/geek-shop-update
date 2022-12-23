@@ -13,15 +13,15 @@
     </div>
     <div id="line" class="bg-black h-[4px] rounded w-[70%] mt-[30px] opacity-30 mx-auto "></div>
   </div>
-  <% for (let i = 0; i < category.length; i++) { %>
+  <% for (let i = 0; i < categories.length; i++) { %>
   <div id="container" class="m-[20px] w-[290px] p-[20px] inline-block">
     <div class="product">
       <div id="image" class="mb-[10px]">
-        <a href="<%= category[i].href %>">
-          <img id="container-img" class="h-[250px] w-full object-cover rounded" src="img/category/catalog/<%= category[i].image %>" alt="ERROR"></a>
+        <a href="<%= categories[i].href %>">
+          <img id="container-img" class="h-[250px] w-full object-cover rounded" src="img/category/catalog/<%= categories[i].image %>" alt="ERROR"></a>
       </div>
       <div class="info">
-        <h3 class="text-[21px] font-bold mb-0"><%= category[i].title %></h3>
+        <h3 class="text-[21px] font-bold mb-0"><%= categories[i].title %></h3>
       </div>
     </div>
 

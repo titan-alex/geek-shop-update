@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { category, PrismaClient } from '@prisma/client';
+import { categories, PrismaClient } from '@prisma/client';
 import { Logger } from "../logger/logger";
 import * as ip from 'ip';
 import { renderObject } from '../functions';
@@ -7,36 +7,37 @@ import { addLog } from '../logger/addLog';
 
 const prisma: PrismaClient = new PrismaClient();
 
-export class categoryController {
+export class CategoriesController {
 
     async index(req: Request, res: Response) {
-        const category: category[] = await prisma.category.findMany({
+        const categories: categories[] = await prisma.categories.findMany({
             where:{
-                typ: String('category'), 
+                type_id: 1, 
             }
         });
+        
 
         res.render('catalog', {
-            'category': category,
+            'categories': categories,
             auth: req.session.auth,
             name: req.session.name,
         });
     }
 
     async store(req: Request, res: Response) {
-        const { title, image, href, typ } = req.body;
+        const { title, image, href_id, type_id } = req.body;
 
-        await prisma.category.create({
+        await prisma.categories.create({
             data: {
                 title,
                 image,
-                href,
-                typ
+                href_id,
+                type_id
             }
         });
         addLog(
             `${req.session.name} added new category: "${req.body.title}" 
-            type: ${req.body.typ}
+            type: ${req.body.type_id}
             ip: ${ip.address()}`
         );
 
@@ -46,7 +47,7 @@ export class categoryController {
     async delete(req: Request, res: Response) {
         const { id } = req.body;
 
-        await prisma.category.delete({
+        await prisma.categories.delete({
             where: {
                 id: Number(id)
             }
@@ -60,13 +61,13 @@ export class categoryController {
     }
 
     async games(req: Request, res: Response) {
-        const category: category[] = await prisma.category.findMany({
+        const categories: categories[] = await prisma.categories.findMany({
             where:{
-                typ: String('games'), 
+                type_id: 2, 
             }
         });
-        res.render('category/games', {
-            'games': category,
+        res.render('categories/games', {
+            'games': categories,
             auth: req.session.auth,
             name: req.session.name,
         });

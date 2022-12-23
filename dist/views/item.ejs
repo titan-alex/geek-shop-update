@@ -16,7 +16,7 @@
           <p class="mb-[20px] w-[70%]"><%= all_products.price %> <small>₽</small></p>
         </div>
         <p class="mb-[20px] w-[70%]"><%= all_products.description %></p>
-        <form method="post" action="/cart_add" class="">
+        <form method="post" action="/cart-add" class="">
           <input value="<%= all_products.id %>" type="text" id="shopping-cart" name="shopping-cart"  style="display: none">
           <input value="<%= name %>" type="text" id="name" name="name"  style="display: none">
           <input value="<%= all_products.title %>" type="text" id="title" name="title" style="display: none">

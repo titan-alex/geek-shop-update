@@ -11,7 +11,7 @@ import bcrypt from "bcrypt";
 const prisma: PrismaClient = new PrismaClient();
 
 
-export class sessionController {
+export class SessionController {
     async registration(req: Request, res: Response) {
         res.render("auth",
             renderObject(req, {

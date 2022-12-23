@@ -15,17 +15,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const express_session_1 = __importDefault(require("express-session"));
 const path_1 = __importDefault(require("path"));
-const allProducts_1 = require("./controllers/allProducts");
-const categoryController_1 = require("./controllers/categoryController");
-const shoppingCart_1 = require("./controllers/shoppingCart");
-const sessionController_1 = require("./controllers/sessionController");
-const pageController_1 = require("./controllers/pageController");
+const ItemsController_1 = require("./controllers/ItemsController");
+const CategoriesController_1 = require("./controllers/CategoriesController");
+const ShoppingCartController_1 = require("./controllers/ShoppingCartController");
+const SessionController_1 = require("./controllers/SessionController");
+const PagesController_1 = require("./controllers/PagesController");
 const app = (0, express_1.default)();
-const all_products = new allProducts_1.allProducts();
-const category = new categoryController_1.categoryController();
-const shopping_cart = new shoppingCart_1.shoppingCart();
-const pagesController = new pageController_1.pageController();
-const authenticationController = new sessionController_1.sessionController();
+const all_products = new ItemsController_1.ItemsController();
+const category = new CategoriesController_1.CategoriesController();
+const shopping_cart = new ShoppingCartController_1.ShoppingCartController();
+const authenticationController = new SessionController_1.SessionController();
+const pagesController = new PagesController_1.PagesController();
 app.use(express_1.default.static('public'));
 app.use(express_1.default.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
@@ -48,18 +48,18 @@ app.get("/catalog", (req, res) => {
 app.get("/auth", (req, res) => {
     pagesController.register(req, res);
 });
-app.get("/shopping_cart", (req, res) => {
+app.get("/shopping-cart", (req, res) => {
     shopping_cart.index(req, res);
 });
 app.get("/add", (req, res) => {
     pagesController.add(req, res);
 });
 // CART
-app.post("/cart_add", (req, res) => {
-    shopping_cart.cart_add(req, res);
+app.post("/cart-add", (req, res) => {
+    shopping_cart.cartAdd(req, res);
 });
-app.post("/cart_del", (req, res) => {
-    shopping_cart.cart_del(req, res);
+app.post("/cart-del", (req, res) => {
+    shopping_cart.cartDel(req, res);
 });
 // CATALOG
 app.get("/games", (req, res) => {
@@ -71,12 +71,18 @@ app.get("/GenshinImpact", (req, res) => {
 app.get("/GenshinImpact/:id", (req, res) => {
     all_products.genshinID(req, res);
 });
+// // category
+// // games - 1
+// // movies - 2
+// app.get("/category/:id");
+// // items
+// app.get("/items/:id");
 // STORE
-app.post("/product_add", (req, res) => {
-    all_products.product_add(req, res);
+app.post("/product-add", (req, res) => {
+    all_products.productAdd(req, res);
 });
-app.post("/product_del", (req, res) => {
-    all_products.product_del(req, res);
+app.post("/product-del", (req, res) => {
+    all_products.productDel(req, res);
 });
 app.post("/store", (req, res) => {
     category.store(req, res);

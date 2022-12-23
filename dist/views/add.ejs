@@ -3,7 +3,7 @@
 <%- include('particles/navigation.ejs') %>
 
 
-<form action="/product_add" method="post" id="form_group_all" class="ml-auto mr-auto bg-black text-center w-full">
+<form action="/product-add" method="post" id="form_group_all" class="ml-auto mr-auto bg-black text-center w-full">
   <h1 id="contacts__header" class="text-white font-roboto text-center font-bold">Добавить товар</h1>
 
   <div id="form-group" class="mb-[20px]">
@@ -27,13 +27,13 @@
   </div>
 
   <div id="form-group" class="mb-[20px]">
-    <label id="form-group__label" class="block mb-[3px] text-white font-bold tracking-[3.5px]" for="category">Категория</label>
-    <input value="" id="form-group__input" class="p-[7px]" type="text" id="category" name="category" placeholder="category">
+    <label id="form-group__label" class="block mb-[3px] text-white font-bold tracking-[3.5px]" for="type_id">Тип</label>
+    <input value="" id="form-group__input" class="p-[7px]" type="text" id="type_id" name="type_id" placeholder="type_id">
   </div>
 
   <div id="form-group" class="mb-[20px]">
-    <label id="form-group__label" class="block mb-[3px] text-white font-bold tracking-[3.5px]" for="href">Путь</label>
-    <input value="" id="form-group__input" class="p-[7px]" type="text" id="href" name="href" placeholder="href">
+    <label id="form-group__label" class="block mb-[3px] text-white font-bold tracking-[3.5px]" for="href_id">Путь</label>
+    <input value="" id="form-group__input" class="p-[7px]" type="text" id="href_id" name="href_id" placeholder="href_id">
   </div>
 
   <input id="form-button" class="text-white p-[7px] bg-blue m-[20px] hover: cursor-pointer" type="submit" value="Добавить">
@@ -41,7 +41,7 @@
 
 </form>
 
-<form method="post" action="/product_del" id="form_group_all" class="ml-auto mr-auto bg-black text-center w-full">
+<form method="post" action="/product-del" id="form_group_all" class="ml-auto mr-auto bg-black text-center w-full">
   <h1 id="contacts__header" class="text-white font-roboto text-center font-bold">Удалить товар</h1>
 
   <div id="form-group" class="mb-[20px]">
