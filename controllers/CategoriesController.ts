@@ -9,7 +9,7 @@ const prisma: PrismaClient = new PrismaClient();
 
 export class CategoriesController {
 
-    async index(req: Request, res: Response) {
+    async show(req: Request, res: Response) {
         const categories: categories[] = await prisma.categories.findMany({
             where:{
                 parent_id: 0
@@ -17,7 +17,7 @@ export class CategoriesController {
         });
         
         console.log(categories)
-        res.render('catalog', {
+        res.render('category/show', {
             'categories': categories,
             auth: req.session.auth,
             name: req.session.name,

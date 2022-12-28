@@ -40,8 +40,11 @@ app.get("/", (req: Request, res: Response) => {
 app.get("/about-us", (req: Request, res: Response) => {
   pagesController.about_us(req, res);
 });
-app.get("/catalog", (req: Request, res: Response) => {
-  category.index(req, res);
+app.get("/category/show", (req: Request, res: Response) => {
+  category.show(req, res);
+});
+app.get("/category/index", (req: Request, res: Response) => {
+  category.show(req, res);
 });
 app.get("/auth", (req: Request, res: Response) => {
   pagesController.register(req, res);
@@ -64,9 +67,6 @@ app.post("/cart-del", (req: Request, res: Response) => {
 
 // CATALOG
 
-app.get("/1", (req: Request, res: Response) => {
-  category.games(req, res);
-});
 app.get("/GenshinImpact", (req: Request, res: Response) => {
   all_products.genshin(req, res);
 });
