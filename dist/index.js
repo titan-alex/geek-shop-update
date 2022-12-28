@@ -62,7 +62,7 @@ app.post("/cart-del", (req, res) => {
     shopping_cart.cartDel(req, res);
 });
 // CATALOG
-app.get("/games", (req, res) => {
+app.get("/1", (req, res) => {
     category.games(req, res);
 });
 app.get("/GenshinImpact", (req, res) => {
@@ -71,6 +71,7 @@ app.get("/GenshinImpact", (req, res) => {
 app.get("/GenshinImpact/:id", (req, res) => {
     all_products.genshinID(req, res);
 });
+// app.get("/categories/:id");
 // // category
 // // games - 1
 // // movies - 2

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { all_products, categories, shopping_cart, PrismaClient } from '@prisma/client';
+import { items, categories, shopping_cart, PrismaClient } from '@prisma/client';
 
 
 const prisma: PrismaClient = new PrismaClient();
@@ -7,14 +7,14 @@ const prisma: PrismaClient = new PrismaClient();
 export class PagesController {
 
 async index(req: Request, res: Response) {
-        const all_products: all_products[] = await prisma.all_products.findMany();
+        const items: items[] = await prisma.items.findMany();
 
         res.render('home', {
-            'all_products': all_products,
+            'items': items,
             auth: req.session.auth,
             name: req.session.name,
         });
-        console.log(all_products)
+        console.log(items)
     }
     async about_us(req: Request, res: Response) {
         res.render('about-us', {

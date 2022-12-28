@@ -10,43 +10,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model all_products {
-  id            Int         @id @default(autoincrement())
-  title         String?     @db.VarChar(255)
-  image         String?     @db.VarChar(255)
-  description   String?     @db.VarChar(1000)
-  price         String?     @db.VarChar(255)
-  href          hrefs?      @relation(fields: [href_id], references: [id])
-  href_id       Int?        @db.Int
-  type          types?      @relation(fields: [type_id], references: [id])
-  type_id       Int?        @db.Int
+model items {
+  id                Int               @id @default(autoincrement())
+  title             String?           @db.VarChar(255)
+  image             String?           @db.VarChar(255)
+  description       String?           @db.VarChar(1000)
+  price             String?           @db.VarChar(255)
+  category          categories?       @relation(fields: [category_id], references: [id])
+  category_id       Int?              @db.Int
 
 }
 
 model categories{
-  id        Int       @id @default(autoincrement())
-  image     String?   @db.VarChar(255) 
-  title     String?   @db.VarChar(255)
-  type      types?    @relation(fields: [type_id], references: [id])
-  href          hrefs?      @relation(fields: [href_id], references: [id])
-  type_id   Int?      @db.Int  
-  href_id       Int?        @db.Int
-}
-
-model hrefs{
-  id                  Int      @id @default(autoincrement())
-  title               String?   @db.VarChar(255) 
-  all_products        all_products[]
-  categories          categories []
-
-}
-
-model types{
-  id          Int      @id @default(autoincrement())
-  title       String?   @db.VarChar(255) 
-  all_products       all_products[]
-  categories  categories []
-
+  id         Int       @id @default(autoincrement())
+  title      String?   @db.VarChar(255)
+  image      String?   @db.VarChar(255) 
+  parent_id  Int       @db.Int
+  categories items[]
 }
 
 model users{

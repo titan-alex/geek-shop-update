@@ -64,7 +64,7 @@ app.post("/cart-del", (req: Request, res: Response) => {
 
 // CATALOG
 
-app.get("/games", (req: Request, res: Response) => {
+app.get("/1", (req: Request, res: Response) => {
   category.games(req, res);
 });
 app.get("/GenshinImpact", (req: Request, res: Response) => {
@@ -73,6 +73,8 @@ app.get("/GenshinImpact", (req: Request, res: Response) => {
 app.get("/GenshinImpact/:id", (req: Request, res: Response) => {
   all_products.genshinID(req, res);
 });
+
+// app.get("/categories/:id");
 
 // // category
 // // games - 1

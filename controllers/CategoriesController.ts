@@ -12,11 +12,11 @@ export class CategoriesController {
     async index(req: Request, res: Response) {
         const categories: categories[] = await prisma.categories.findMany({
             where:{
-                type_id: 1, 
+                parent_id: 0
             }
         });
         
-
+        console.log(categories)
         res.render('catalog', {
             'categories': categories,
             auth: req.session.auth,
@@ -25,14 +25,13 @@ export class CategoriesController {
     }
 
     async store(req: Request, res: Response) {
-        const { title, image, href_id, type_id } = req.body;
+        const { title, image, parent_id } = req.body;
 
         await prisma.categories.create({
             data: {
                 title,
                 image,
-                href_id,
-                type_id
+                parent_id: Number(parent_id)
             }
         });
         addLog(
@@ -45,9 +44,8 @@ export class CategoriesController {
     }
 
     async delete(req: Request, res: Response) {
-        const { id } = req.body;
-
-        await prisma.categories.delete({
+        const { id } = req.body;   
+        await prisma.categories.delete({ 
             where: {
                 id: Number(id)
             }
@@ -62,12 +60,14 @@ export class CategoriesController {
 
     async games(req: Request, res: Response) {
         const categories: categories[] = await prisma.categories.findMany({
+            
             where:{
-                type_id: 2, 
+                type_id: 1, 
             }
         });
+        console.log(categories)
         res.render('categories/games', {
-            'games': categories,
+            'games': categories,    
             auth: req.session.auth,
             name: req.session.name,
         });

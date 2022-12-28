@@ -40,15 +40,19 @@ const prisma = new client_1.PrismaClient();
 class ItemsController {
     productAdd(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { title, image, description, price, type_id, href_id } = req.body;
-            yield prisma.all_products.create({
+            const { title, image, description, price, category_id } = req.body;
+            console.log(req.body);
+            yield prisma.items.create({
                 data: {
                     title,
                     image,
                     description,
                     price,
-                    href_id,
-                    type_id,
+                    category: {
+                        connect: {
+                            id: Number(category_id)
+                        }
+                    },
                 }
             });
             (0, addLog_1.addLog)(`${req.session.name} added new product: ${req.body.title} 
@@ -60,7 +64,7 @@ class ItemsController {
     productDel(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.body;
-            yield prisma.all_products.delete({
+            yield prisma.items.delete({
                 where: {
                     id: Number(id)
                 }
@@ -72,13 +76,13 @@ class ItemsController {
     }
     genshin(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const all_products = yield prisma.all_products.findMany({
+            const items = yield prisma.items.findMany({
                 where: {
                     type_id: 4,
                 }
             });
             res.render('catalog/games/GenshinImpact', {
-                'all_products': all_products,
+                'items': items,
                 auth: req.session.auth,
                 name: req.session.name,
             });
@@ -86,13 +90,13 @@ class ItemsController {
     }
     genshinID(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const all_products = yield prisma.all_products.findUnique({
+            const items = yield prisma.items.findUnique({
                 where: {
                     id: Number(req.params.id),
                 }
             });
             res.render('item', {
-                'all_products': all_products,
+                'items': items,
                 auth: req.session.auth,
                 name: req.session.name,
             });

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { all_products, PrismaClient } from '@prisma/client';
+import { items, PrismaClient } from '@prisma/client';
 import { Logger } from "../logger/logger";
 import * as ip from 'ip';
 import { renderObject } from '../functions';
@@ -10,16 +10,20 @@ const prisma: PrismaClient = new PrismaClient();
 export class ItemsController {
 
     async productAdd(req: Request, res: Response) {
-        const { title, image, description, price, type_id, href_id} = req.body;
+        const { title, image, description, price, category_id} = req.body;
+        console.log(req.body)
 
-        await prisma.all_products.create({
+        await prisma.items.create({
             data: {
                 title,
                 image,
                 description,
                 price,
-                href_id,
-                type_id,
+                category: {
+                    connect: {
+                        id: Number(category_id)
+                    }
+                },
                 
             }
         });
@@ -35,7 +39,7 @@ export class ItemsController {
     async productDel(req: Request, res: Response) {
         const { id } = req.body;
 
-        await prisma.all_products.delete({
+        await prisma.items.delete({
             where: {
                 id: Number(id)
             }
@@ -51,26 +55,26 @@ export class ItemsController {
 
 
     async genshin(req: Request, res: Response) {
-        const all_products: all_products[] = await prisma.all_products.findMany({
+        const items: items[] = await prisma.items.findMany({
             where:{
                 type_id: 4, 
             }
         });
         res.render('catalog/games/GenshinImpact', {
-            'all_products': all_products,
+            'items': items,
             auth: req.session.auth,
             name: req.session.name,
         });
     }
 
     async genshinID(req: Request, res: Response) {
-        const all_products = await prisma.all_products.findUnique({
+        const items = await prisma.items.findUnique({
             where:{
                 id: Number(req.params.id), 
             }
         });
         res.render('item', {
-            'all_products': all_products,
+            'items': items,
             auth: req.session.auth,
             name: req.session.name,
         });

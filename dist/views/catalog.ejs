@@ -17,7 +17,7 @@
   <div id="container" class="m-[20px] w-[290px] p-[20px] inline-block">
     <div class="product">
       <div id="image" class="mb-[10px]">
-        <a href="<%= categories[i].href %>">
+        <a href="<%= categories[i].href_id %>">
           <img id="container-img" class="h-[250px] w-full object-cover rounded" src="img/category/catalog/<%= categories[i].image %>" alt="ERROR"></a>
       </div>
       <div class="info">
@@ -43,13 +43,8 @@
   </div>
 
   <div id="form-group" class="mb-[20px]">
-    <label id="form-group__label" class="block mb-[3px] text-white font-bold tracking-[3.5px]" for="title">Путь</label>
-    <input value="" id="form-group__input" class="p-[7px]" type="text" id="href" name="href" placeholder="href">
-  </div>
-
-  <div id="form-group" class="mb-[20px]">
-    <label id="form-group__label" class="block mb-[3px] text-white font-bold tracking-[3.5px]" for="title">Тип</label>
-    <input value="" id="form-group__input" class="p-[7px]" type="text" id="typ" name="typ" placeholder="typ">
+    <label id="form-group__label" class="block mb-[3px] text-white font-bold tracking-[3.5px]" for="parent_id">Родитель</label>
+    <input value="" id="form-group__input" class="p-[7px]" type="text" id="parent_id" name="parent_id" placeholder="parent_id">
   </div>
 
 
