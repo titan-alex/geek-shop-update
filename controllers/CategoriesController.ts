@@ -65,7 +65,7 @@ export class CategoriesController {
                 parent_id: Number(req.params.id)
             }
         });
-        console.log(categories)
+        console.log(req.params.id)
         res.render('category/index', {
             'categories': categories,
             auth: req.session.auth,
