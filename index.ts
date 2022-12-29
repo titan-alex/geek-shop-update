@@ -8,7 +8,7 @@ import { SessionController } from './controllers/SessionController';
 import { PagesController } from './controllers/PagesController';
 
 const app: Express = express();
-const all_products = new ItemsController();
+const items = new ItemsController();
 const category = new  CategoriesController();
 const shopping_cart = new ShoppingCartController();
 const authenticationController = new SessionController();
@@ -43,8 +43,14 @@ app.get("/about-us", (req: Request, res: Response) => {
 app.get("/category/show", (req: Request, res: Response) => {
   category.show(req, res);
 });
-app.get("/category/index", (req: Request, res: Response) => {
-  category.show(req, res);
+app.get("/category/index/:id", (req: Request, res: Response) => {
+  category.index(req, res);
+});
+app.get("/catalog/show", (req: Request, res: Response) => {
+  category.showItem(req, res);
+});
+app.get("/catalog/index", (req: Request, res: Response) => {
+  category.indexItem(req, res);
 });
 app.get("/auth", (req: Request, res: Response) => {
   pagesController.register(req, res);
@@ -67,12 +73,7 @@ app.post("/cart-del", (req: Request, res: Response) => {
 
 // CATALOG
 
-app.get("/GenshinImpact", (req: Request, res: Response) => {
-  all_products.genshin(req, res);
-});
-app.get("/GenshinImpact/:id", (req: Request, res: Response) => {
-  all_products.genshinID(req, res);
-});
+
 
 // app.get("/categories/:id");
 
@@ -87,10 +88,10 @@ app.get("/GenshinImpact/:id", (req: Request, res: Response) => {
 
 // STORE
 app.post("/product-add", (req: Request, res: Response) => {
-  all_products.productAdd(req, res);
+  items.productAdd(req, res);
 });
 app.post("/product-del", (req: Request, res: Response) => {
-  all_products.productDel(req, res);
+  items.productDel(req, res);
 });
 app.post("/store", (req: Request, res: Response) => {
   category.store(req, res);

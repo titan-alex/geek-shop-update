@@ -18,7 +18,6 @@ model items {
   price             String?           @db.VarChar(255)
   category          categories?       @relation(fields: [category_id], references: [id])
   category_id       Int?              @db.Int
-
 }
 
 model categories{
@@ -26,7 +25,7 @@ model categories{
   title      String?   @db.VarChar(255)
   image      String?   @db.VarChar(255) 
   parent_id  Int       @db.Int
-  categories items[]
+  items items[]
 }
 
 model users{

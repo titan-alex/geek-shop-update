@@ -44,15 +44,11 @@ class ItemsController {
             console.log(req.body);
             yield prisma.items.create({
                 data: {
-                    title,
-                    image,
-                    description,
-                    price,
-                    category: {
-                        connect: {
-                            id: Number(category_id)
-                        }
-                    },
+                    title: title,
+                    image: image,
+                    description: description,
+                    price: price,
+                    category_id: Number(category_id),
                 }
             });
             (0, addLog_1.addLog)(`${req.session.name} added new product: ${req.body.title} 
@@ -72,34 +68,6 @@ class ItemsController {
             (0, addLog_1.addLog)(`${req.session.name} deleted product: "${req.body.id}" 
             ip: ${ip.address()}`);
             res.redirect('/add');
-        });
-    }
-    genshin(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const items = yield prisma.items.findMany({
-                where: {
-                    type_id: 4,
-                }
-            });
-            res.render('catalog/games/GenshinImpact', {
-                'items': items,
-                auth: req.session.auth,
-                name: req.session.name,
-            });
-        });
-    }
-    genshinID(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const items = yield prisma.items.findUnique({
-                where: {
-                    id: Number(req.params.id),
-                }
-            });
-            res.render('item', {
-                'items': items,
-                auth: req.session.auth,
-                name: req.session.name,
-            });
         });
     }
 }

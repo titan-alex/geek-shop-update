@@ -10,21 +10,17 @@ const prisma: PrismaClient = new PrismaClient();
 export class ItemsController {
 
     async productAdd(req: Request, res: Response) {
-        const { title, image, description, price, category_id} = req.body;
+        const { title, image, description, price, category_id } = req.body;
         console.log(req.body)
 
         await prisma.items.create({
             data: {
-                title,
-                image,
-                description,
-                price,
-                category: {
-                    connect: {
-                        id: Number(category_id)
-                    }
-                },
-                
+                title: title,
+                image: image,
+                description: description,
+                price: price,
+                category_id: Number(category_id),
+
             }
         });
         addLog(
@@ -51,33 +47,4 @@ export class ItemsController {
 
         res.redirect('/add');
     }
-
-
-
-    async genshin(req: Request, res: Response) {
-        const items: items[] = await prisma.items.findMany({
-            where:{
-                type_id: 4, 
-            }
-        });
-        res.render('catalog/games/GenshinImpact', {
-            'items': items,
-            auth: req.session.auth,
-            name: req.session.name,
-        });
-    }
-
-    async genshinID(req: Request, res: Response) {
-        const items = await prisma.items.findUnique({
-            where:{
-                id: Number(req.params.id), 
-            }
-        });
-        res.render('item', {
-            'items': items,
-            auth: req.session.auth,
-            name: req.session.name,
-        });
-    }
-
 }

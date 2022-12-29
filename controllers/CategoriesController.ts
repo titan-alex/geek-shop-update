@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { categories, PrismaClient } from '@prisma/client';
+import { categories, items,  PrismaClient } from '@prisma/client';
 import { Logger } from "../logger/logger";
 import * as ip from 'ip';
 import { renderObject } from '../functions';
@@ -11,12 +11,12 @@ export class CategoriesController {
 
     async show(req: Request, res: Response) {
         const categories: categories[] = await prisma.categories.findMany({
-            where:{
+            where: {
                 parent_id: 0
             }
         });
-        
-        console.log(categories)
+
+
         res.render('category/show', {
             'categories': categories,
             auth: req.session.auth,
@@ -36,16 +36,16 @@ export class CategoriesController {
         });
         addLog(
             `${req.session.name} added new category: "${req.body.title}" 
-            type: ${req.body.type_id}
+            parent: ${req.body.parent_id}
             ip: ${ip.address()}`
         );
 
-        res.redirect('/catalog');
+        res.redirect('category/show');
     }
 
     async delete(req: Request, res: Response) {
-        const { id } = req.body;   
-        await prisma.categories.delete({ 
+        const { id } = req.body;
+        await prisma.categories.delete({
             where: {
                 id: Number(id)
             }
@@ -55,22 +55,53 @@ export class CategoriesController {
             ip: ${ip.address()}`
         );
 
-        res.redirect('/catalog');
+        res.redirect('category/show');
     }
 
-    async games(req: Request, res: Response) {
+    async index(req: Request, res: Response) {
+
         const categories: categories[] = await prisma.categories.findMany({
-            
-            where:{
-                type_id: 1, 
+            where: {
+                parent_id: Number(2)
             }
         });
         console.log(categories)
-        res.render('categories/games', {
-            'games': categories,    
+        res.render('category/index', {
+            'categories': categories,
             auth: req.session.auth,
             name: req.session.name,
         });
     }
+
+    async indexItem(req: Request, res: Response) {
+
+        const categories: categories[] = await prisma.categories.findMany({
+            where: {
+                parent_id: Number(2)
+            }
+        });
+        console.log(categories)
+        res.render('/catalog/show', {
+            'categories': categories,
+            auth: req.session.auth,
+            name: req.session.name,
+        });
+    }
+
+    async showItem(req: Request, res: Response) {
+        const items: items[] = await prisma.items.findMany({
+            where: {
+                category_id: 0
+            }
+        });
+
+
+        res.render('/catalog/show', {
+            'items': items,
+            auth: req.session.auth,
+            name: req.session.name,
+        });
+    }
+
 
 }
