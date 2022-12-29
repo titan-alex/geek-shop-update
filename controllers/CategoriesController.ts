@@ -62,7 +62,7 @@ export class CategoriesController {
 
         const categories: categories[] = await prisma.categories.findMany({
             where: {
-                parent_id: Number(2)
+                parent_id: Number(req.params.id)
             }
         });
         console.log(categories)
