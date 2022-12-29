@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { items, PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import { Logger } from "../logger/logger";
 import * as ip from 'ip';
 import { renderObject } from '../functions';
@@ -11,7 +11,7 @@ export class ItemsController {
 
     async productAdd(req: Request, res: Response) {
         const { title, image, description, price, category_id } = req.body;
-        console.log(req.body)
+        console.log(req.body.category_id)
 
         await prisma.items.create({
             data: {
@@ -20,7 +20,6 @@ export class ItemsController {
                 description: description,
                 price: price,
                 category_id: Number(category_id),
-
             }
         });
         addLog(
