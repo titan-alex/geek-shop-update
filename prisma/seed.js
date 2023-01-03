@@ -11,7 +11,7 @@ async function main() {
             {image:"fanko_pop.jpg", title: "Funko Pop", parent_id:0},
             {image:"movies.jpg", title: "Фильмы", parent_id:0},
             {image:"clothes.jpg", title: "Одежда", parent_id:0},
-            {image:"GenshinImpact.jpeg", title: "Genshin Impact", parent_id:2},
+            {image:"GenshinImpact.jpg", title: "Genshin Impact", parent_id:2},
             {image:"DemonSlayer.jpg", title: "Demon Slayer", parent_id:1},
             {image:"attackOnTitan.jpg", title: "Attak on Titan", parent_id:1},
             {image:"OnePanchMan.jpg", title: "OnePanchMan", parent_id:1},

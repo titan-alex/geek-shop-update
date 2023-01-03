@@ -15,8 +15,6 @@ export class CategoriesController {
                 parent_id: 0
             }
         });
-
-
         res.render('category/show', {
             'categories': categories,
             auth: req.session.auth,
@@ -59,13 +57,12 @@ export class CategoriesController {
     }
 
     async index(req: Request, res: Response) {
-
         const categories: categories[] = await prisma.categories.findMany({
             where: {
-                parent_id: Number(req.params.id)
+                parent_id: Number(req.params.id),
             }
         });
-        console.log(req.params.id)
+        
         res.render('category/index', {
             'categories': categories,
             auth: req.session.auth,
@@ -77,11 +74,10 @@ export class CategoriesController {
 
         const categories: categories[] = await prisma.categories.findMany({
             where: {
-                parent_id: Number(2)
+                parent_id: Number(req.params.id)
             }
         });
-        console.log(categories)
-        res.render('/catalog/show', {
+        res.render('catalog/index', {
             'categories': categories,
             auth: req.session.auth,
             name: req.session.name,
@@ -91,12 +87,11 @@ export class CategoriesController {
     async showItem(req: Request, res: Response) {
         const items: items[] = await prisma.items.findMany({
             where: {
-                category_id: 0
+                category_id: Number(8)
             }
         });
-
-
-        res.render('/catalog/show', {
+        console.log(req.body.id)
+        res.render('category/showItem', {
             'items': items,
             auth: req.session.auth,
             name: req.session.name,

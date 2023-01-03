@@ -11,7 +11,6 @@ export class ItemsController {
 
     async productAdd(req: Request, res: Response) {
         const { title, image, description, price, category_id } = req.body;
-        console.log(req.body.category_id)
 
         await prisma.items.create({
             data: {

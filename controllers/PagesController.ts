@@ -14,7 +14,7 @@ async index(req: Request, res: Response) {
             auth: req.session.auth,
             name: req.session.name,
         });
-        console.log(items)
+        
     }
     async about_us(req: Request, res: Response) {
         res.render('about-us', {

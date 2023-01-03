@@ -17,7 +17,8 @@
   <div id="container" class="m-[20px] w-[290px] p-[20px] inline-block">
     <div class="product">
       <div id="image" class="mb-[10px]">
-        <a href="/category/index/<%= categories[i].parent_id %>">
+        <a href="/category/index/<%= categories[i].id %>">
+          <input value="<%=  categories[i].id %>" type="text" id="id" name="id" style="display: none;">
           <img id="container-img" class="h-[250px] w-full object-cover rounded" src="../img/category/catalog/<%= categories[i].image %>" alt="ERROR"></a>
       </div>
       <div class="info">

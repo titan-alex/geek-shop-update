@@ -41,7 +41,6 @@ class ItemsController {
     productAdd(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { title, image, description, price, category_id } = req.body;
-            console.log(req.body.category_id);
             yield prisma.items.create({
                 data: {
                     title: title,
