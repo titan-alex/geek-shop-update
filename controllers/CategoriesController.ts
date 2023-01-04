@@ -72,13 +72,14 @@ export class CategoriesController {
 
     async indexItem(req: Request, res: Response) {
 
-        const categories: categories[] = await prisma.categories.findMany({
+        const items: items[] = await prisma.items.findMany({
             where: {
-                parent_id: Number(req.params.id)
+                category_id: Number(req.params.id)
             }
         });
+        console.log(items);
         res.render('catalog/index', {
-            'categories': categories,
+            'items': items,
             auth: req.session.auth,
             name: req.session.name,
         });
@@ -87,11 +88,11 @@ export class CategoriesController {
     async showItem(req: Request, res: Response) {
         const items: items[] = await prisma.items.findMany({
             where: {
-                category_id: Number(8)
+                category_id: Number(req.params.id)
             }
         });
-        console.log(req.body.id)
-        res.render('category/showItem', {
+        
+        res.render('catalog/show', {
             'items': items,
             auth: req.session.auth,
             name: req.session.name,

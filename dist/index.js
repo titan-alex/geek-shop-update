@@ -48,8 +48,11 @@ app.get("/category/show", (req, res) => {
 app.get("/category/index/:id", (req, res) => {
     category.index(req, res);
 });
-app.get("/showItem", (req, res) => {
+app.get("/catalog/show/:id", (req, res) => {
     category.showItem(req, res);
+});
+app.get("/catalog/index/:id", (req, res) => {
+    category.indexItem(req, res);
 });
 app.get("/auth", (req, res) => {
     pagesController.register(req, res);

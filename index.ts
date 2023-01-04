@@ -46,8 +46,11 @@ app.get("/category/show", (req: Request, res: Response) => {
 app.get("/category/index/:id", (req: Request, res: Response) => {
   category.index(req, res);
 });
-app.get("/showItem", (req: Request, res: Response) => {
+app.get("/catalog/show/:id", (req: Request, res: Response) => {
   category.showItem(req, res);
+});
+app.get("/catalog/index/:id", (req: Request, res: Response) => {
+  category.indexItem(req, res);
 });
 app.get("/auth", (req: Request, res: Response) => {
   pagesController.register(req, res);

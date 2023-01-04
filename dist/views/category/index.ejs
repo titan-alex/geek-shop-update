@@ -2,17 +2,17 @@
 
 <%- include('../particles/navigation.ejs') %>
 
-<div id="catalog" class="text-center ">
-  <div class="catalog__head">
-    <div id="catalog__title" class="mt-0">
-      <h2 class="font-black ">Что-то</h2>
-    </div>
+ <div id="catalog" class="text-center ">
+   <div class="catalog__head">
+      <div id="catalog__title" class="mt-0">     
+        <h2 class="font-black "></h2>
+      </div> 
     <div id="line" class="bg-black h-[4px] rounded w-[70%] mt-[30px] opacity-30 mx-auto "></div>
   </div>
   <% for (let i = 0; i < categories.length; i++) { %>
-    <div id="container" class="m-[20px] w-[290px] p-[20px] inline-block">
+    <div id="container" class=" m-[20px] w-[290px] p-[20px] inline-block">
       <div id="image" class="mb-[10px]">
-        <a href="/showItem">
+        <a href="/catalog/show/<%= categories[i].id %>"">
           <img id="container-img" class="h-[250px] w-full object-cover rounded" src="./../../img/category/catalog/<%= categories[i].image %>" alt="ERROR"></a>
       </div>
       <div class="info">
@@ -20,7 +20,7 @@
       </div>
     </div>
 
-  </div>
+  
   <% } %>
 </div>
 

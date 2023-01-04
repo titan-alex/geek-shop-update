@@ -1,0 +1,36 @@
+<%- include('../particles/header.ejs') %>
+
+<%- include('../particles/navigation.ejs') %>
+
+<div id="section" class="p-[20px] text-center">
+  <div id="section__all" class="flex">
+    <div id="section__left__box" class="inline-block">
+      <img class="rounded-lg w-[400px]" src="../../img/product/<%= items.image %>" alt="ERROR">
+    </div>
+    <div id="section__right__box" class="inline-block">
+      <div id="section__inf__item" class="text-left  ml-[30px]">
+        <h2 class="mb-[20px] mt-0 font-bold text-[24px]">
+          <%= items.title %>
+        </h2>
+        <div id="section__price" class="text-[18px] font-bold">
+          <p class="mb-[20px] w-[70%]"><%= items.price %> <small>₽</small></p>
+        </div>
+        <p class="mb-[20px] w-[70%]"><%= items.description %></p>
+        <form method="post" action="/cart-add" class="">
+          <input value="<%= items.id %>" type="text" id="shopping-cart" name="shopping-cart"  style="display: none">
+          <input value="<%= name %>" type="text" id="name" name="name"  style="display: none">
+          <input value="<%= items.title %>" type="text" id="title" name="title" style="display: none">
+          <input value="<%= items.image %>" type="text" id="image" name="image" style="display: none">
+          <input value="<%= items.description %>" type="text" id="description" name="description"  style="display: none">
+          <input value="<%= items.price %>" type="text" id="price" name="price" style="display: none">
+          <input value="<%= items.category %>" type="text" id="category" name="category"  style="display: none">
+          <input value="<%= items.href %>" type="text" id="href" name="href"  style="display: none">   
+          <input value="<%=  items.id %>" type="text" id="article" name="article" style="display: none;">
+       
+          <button id="product__buy" class="rounded-0 bg-white" type="submit"><ion-icon class="text-black text-[33px]" name="basket"></ion-icon></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('../particles/footer.ejs') %>
