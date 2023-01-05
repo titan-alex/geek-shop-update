@@ -34,27 +34,11 @@
     items-center text-center ">
       <h3 class=" font-bold text-center my-[10px] mr-0 ml-[15px] font-gilroy ">Все товары</h3>
       <ul>
+      <% for (let i = 0; i < categories.length; i++) { %>     
         <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
-          <a href="/anime ">Аниме</a>
-        </li>
-        <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
-          <a href="/games">Игры</a>
-        </li>
-        <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
-          <a href="/cartoon">Мультфильмы</a>
-        </li>
-        <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
-          <a href="/music">К-поп/Музыка</a>
-        </li>
-        <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
-          <a href="/fanko_pop">Funko Pop</a>
-        </li>
-        <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
-          <a href="/movies">Фильмы</a>
-        </li>
-        <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
-          <a href="/clothes">Одежда</a>
-        </li>
+          <a href="/category/index/<%= categories[i].parent_id%>"><%= categories[i].title%></a>
+        </li>     
+      <% } %>
       </ul>
     </div>
     <div id="cinema" class="m-[20px] w-[290px] h-auto p-[10px] 
@@ -62,15 +46,11 @@
     items-center text-center ">
       <h3 class=" font-bold text-center my-[10px] mr-0 ml-[15px] font-gilroy ">Кинемотограф</h3>
       <ul>
+        <% for (let i = 0; i < cinema.length; i++) { %>
         <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
-          <a href="/anime">Аниме</a>
+          <a href="/category/index/:[i]"><%= cinema[i].title%></a>
         </li>
-        <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
-          <a href="/cartoon">Мультфильмы</a>
-        </li>
-        <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
-          <a href="/movies">Фильмы</a>
-        </li>
+        <% } %>
       </ul>
     </div>
     <div id="games" class="m-[20px] w-[290px] h-auto p-[10px] 
@@ -78,9 +58,11 @@
     items-center text-center ">
       <h3 class=" font-bold text-center my-[10px] mr-0 ml-[15px] font-gilroy ">Игры</h3>
       <ul>
+        <% for (let i = 0; i < games.length; i++) { %>     
         <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
-          <a href="./catalog/index">Genshin Impact</a>
+          <a href="/catalog/show/<%= games[i].parent_id%>"><%= games[i].title%></a>
         </li>
+        <% } %>
       </ul>
     </div>
     <div id="clothes" class="m-[20px] w-[290px] h-auto p-[10px] 

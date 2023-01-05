@@ -8,9 +8,28 @@ export class PagesController {
 
 async index(req: Request, res: Response) {
         const items: items[] = await prisma.items.findMany();
+        const categories: categories[] = await prisma.categories.findMany({
+            where:{
+                parent_id: Number(0),
+            }
+        });
+        const cinema: categories[] = await prisma.categories.findMany({
+            where:{
+                id: { in: [1, 3, 6] },
+            }    
+        });
+        const games: categories[] = await prisma.categories.findMany({
+            where:{
+                parent_id: Number(2),
+            }
+        });
+        console.log(categories);
 
         res.render('home', {
             'items': items,
+            'categories': categories,
+            'cinema': cinema,
+            'games': games,
             auth: req.session.auth,
             name: req.session.name,
         });
