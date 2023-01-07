@@ -72,16 +72,16 @@ export class CategoriesController {
 
     async indexItem(req: Request, res: Response) {
 
-        const items: items[] = await prisma.items.findMany({
+        const items = await prisma.items.findFirst({
             where: {
-                category_id: Number(req.params.id)
+                id: Number(req.params.id)
             }
         });
         console.log(items);
         res.render('catalog/index', {
             'items': items,
             auth: req.session.auth,
-            name: req.session.name,
+            name: req.session.name
         });
     }
 

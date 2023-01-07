@@ -13,17 +13,14 @@
     <div id="container" class="m-[20px] w-[290px] p-[20px] inline-block">
       <div class="product">
         <div id="image" class="mb-[10px]">
-        <a href="/catalog/index/<%=  items[i].category_id %>">
-          <img id="container-img" class="h-[250px] w-full object-cover rounded"  src="./../img/category/catalog/<%= items[i].image %>" alt="ERROR"></a>
+        <a href="/catalog/index/<%=  items[i].id %>">
+          <img id="container-img" class="h-[250px] w-full object-cover rounded"  src="../../img/product/<%= items[i].image %>" alt="ERROR"></a>
       </div>
       <div class="info">
         <h3 class="text-[21px] font-bold mb-0"><%= items[i].title %></h3>
-
         
         <div id="info-price" class="flex justify-between items-center mt-[10px]">
           <span id="price" class="font-bold text-[18px] "><%=  items[i].price %> <small>₽</small></span>
-
-
           <form method="post" action="/cart-add" >
             <input value="<%=  items[i].id %>"  type="text" id="shopping-cart" name="shopping-cart" placeholder="" style="display: none;">
             <input value="<%=  items[i].article %>"  type="text" id="article" name="article" placeholder="" style="display: none;">
@@ -38,7 +35,6 @@
         <!-- <p class="info-description"><%=  items[i].description %></p> -->
       </div>
     </div>
-
   </div>
   <% } %>
 </div>
