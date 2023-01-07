@@ -35,7 +35,7 @@
       <h3 class=" font-bold text-center my-[10px] mr-0 ml-[15px] font-gilroy ">Все товары</h3>
       <ul>
       <% for (let i = 0; i < categories.length; i++) { %>     
-        <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
+        <li class="no-underline mt-[10px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
           <a href="/category/index/<%= categories[i].parent_id%>"><%= categories[i].title%></a>
         </li>     
       <% } %>
@@ -47,7 +47,7 @@
       <h3 class=" font-bold text-center my-[10px] mr-0 ml-[15px] font-gilroy ">Кинемотограф</h3>
       <ul>
         <% for (let i = 0; i < cinema.length; i++) { %>
-        <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
+        <li class="no-underline mt-[10px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
           <a href="/category/index/:[i]"><%= cinema[i].title%></a>
         </li>
         <% } %>
@@ -59,7 +59,7 @@
       <h3 class=" font-bold text-center my-[10px] mr-0 ml-[15px] font-gilroy ">Игры</h3>
       <ul>
         <% for (let i = 0; i < games.length; i++) { %>     
-        <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
+        <li class="no-underline mt-[10px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
           <a href="/catalog/show/<%= games[i].parent_id%>"><%= games[i].title%></a>
         </li>
         <% } %>
@@ -70,7 +70,7 @@
     items-center text-center ">
       <h3 class=" font-bold text-center my-[10px] mr-0 ml-[15px] font-gilroy ">Одежда</h3>
       <ul>
-        <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
+        <li class="no-underline mt-[10px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
           <a href="/clothes">Одежда</a>
         </li>
       </ul>
@@ -80,10 +80,10 @@
     items-center text-center ">
       <h3 class=" font-bold text-center my-[10px] mr-0 ml-[15px] font-gilroy ">Прочее</h3>
       <ul>
-        <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
+        <li class="no-underline mt-[10px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
           <a href="/fanko_pop">Funko Pop</a>
         </li>
-        <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
+        <li class="no-underline mt-[10px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
           <a href="/music">К-поп/Музыка</a>
         </li>
       </ul>
