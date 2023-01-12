@@ -35,13 +35,8 @@
       <h3 class=" font-bold text-center my-[10px] mr-0 ml-[15px] font-gilroy ">Все товары</h3>
       <ul>
       <% for (let i = 0; i < categories.length; i++) { %>     
-<<<<<<< HEAD
         <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
           <a href="/category/index/<%= categories[i].id%>"><%= categories[i].title%></a>
-=======
-        <li class="no-underline mt-[10px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
-          <a href="/category/index/<%= categories[i].parent_id%>"><%= categories[i].title%></a>
->>>>>>> b326f65871662c52ed45b5b6e9d83a34e0dc1b4b
         </li>     
       <% } %>
       </ul>
@@ -52,13 +47,8 @@
       <h3 class=" font-bold text-center my-[10px] mr-0 ml-[15px] font-gilroy ">Кинемотограф</h3>
       <ul>
         <% for (let i = 0; i < cinema.length; i++) { %>
-<<<<<<< HEAD
         <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
           <a href="/category/index/<%= cinema[i].id%>"><%= cinema[i].title%></a>
-=======
-        <li class="no-underline mt-[10px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
-          <a href="/category/index/:[i]"><%= cinema[i].title%></a>
->>>>>>> b326f65871662c52ed45b5b6e9d83a34e0dc1b4b
         </li>
         <% } %>
       </ul>
@@ -69,13 +59,8 @@
       <h3 class=" font-bold text-center my-[10px] mr-0 ml-[15px] font-gilroy ">Игры</h3>
       <ul>
         <% for (let i = 0; i < games.length; i++) { %>     
-<<<<<<< HEAD
         <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
           <a href="/catalog/show/<%= games[i].id%>"><%= games[i].title%></a>
-=======
-        <li class="no-underline mt-[10px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
-          <a href="/catalog/show/<%= games[i].parent_id%>"><%= games[i].title%></a>
->>>>>>> b326f65871662c52ed45b5b6e9d83a34e0dc1b4b
         </li>
         <% } %>
       </ul>
@@ -85,14 +70,9 @@
     items-center text-center ">
       <h3 class=" font-bold text-center my-[10px] mr-0 ml-[15px] font-gilroy ">Одежда</h3>
       <ul>
-<<<<<<< HEAD
         <% for (let i = 0; i < clothes.length; i++) { %>
         <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
           <a href="/catalog/show/<%= clothes[i].id%>"><%= clothes[i].title%></a>
-=======
-        <li class="no-underline mt-[10px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
-          <a href="/clothes">Одежда</a>
->>>>>>> b326f65871662c52ed45b5b6e9d83a34e0dc1b4b
         </li>
         <% } %>
       </ul>
@@ -102,17 +82,9 @@
     items-center text-center ">
       <h3 class=" font-bold text-center my-[10px] mr-0 ml-[15px] font-gilroy ">Прочее</h3>
       <ul>
-<<<<<<< HEAD
         <% for (let i = 0; i < other.length; i++) { %>
         <li class="no-underline mt-[0px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
           <a href="/category/index/<%= other[i].id%>"><%= other[i].title%></a>
-=======
-        <li class="no-underline mt-[10px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
-          <a href="/fanko_pop">Funko Pop</a>
-        </li>
-        <li class="no-underline mt-[10px] mr-[0px] mb-[10px] ml-[15px] text-left color-white font-gilroy ">
-          <a href="/music">К-поп/Музыка</a>
->>>>>>> b326f65871662c52ed45b5b6e9d83a34e0dc1b4b
         </li>
         <% } %>
       </ul>
