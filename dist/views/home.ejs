@@ -104,7 +104,41 @@
       </h3>
   </div>
   <div id="line" class="bg-black h-[4px] rounded-[4px] w-[70%] mt-[30px] mx-auto opacity-30"></div>
-  <%- include('particles/productCard.ejs') %>
+  <% for (let i = 0; i < items.length; i++) { %>
+    <div id="container" class="m-[20px] w-[290px] p-[20px] inline-block">
+        <div id="product" class="">
+          <div id="image" class="mb-[10px]">
+            <a href="/catalog/index/<%=  items[i].id %>">
+              <img id="container-img" src="img/product/<%= items[i].image %>" alt="ERROR" class="h-[250px] w-full object-cover rounded-[7px]"></a>
+          </div>
+          <div class="info">
+            <h3 class="text-[21px] font-bold mb-0 "><%= items[i].title %></h3>
+    
+            
+            <div id="info-price" class="flex justify-between items-center mt-[10px]">
+              <span id="price" class="font-bold text-[18px] "><%=  items[i].price %> <small>₽</small></span>
+    
+    
+              <form method="post" action="/cart-add" id="add-to-cart" class="border-0 w-[40px] h-[40px] flex items-center justify-center ">
+                <input value="<%=  items[i].id %>" class="form-group__input" type="text" id="shopping-cart" name="shopping-cart" placeholder="" style="display: none;">
+                <input value="<%= name %>" class="form-group__input" type="text" id="name" name="name"  style="display: none">
+                <input value="<%=  items[i].id %>" class="form-group__input" type="text" id="article" name="article" placeholder="" style="display: none;">
+                <input value="<%=  items[i].href_id %>" class="form-group__input" type="text" id="href" name="href" placeholder="href" style="display: none;">
+                <input value="<%=  items[i].title %>" class="form-group__input" type="text" id="title" name="title" placeholder="title" style="display: none;">
+                <input value="<%=  items[i].description %>" class="form-group__input" type="text" id="description" name="description" placeholder="Описание" style="display: none;">
+                <input value="<%= items[i].type %>" class="form-group__input" type="text" id="type" name="type"  style="display: none">
+                <input value="<%=  items[i].image %>" class="form-group__input" type="text" id="image" name="image" placeholder="image" style="display: none;">
+                <input value="<%=  items[i].price %>" class="form-group__input" type="text" id="price" name="price" placeholder="price" style="display: none;">
+                <button id="product__buy" class="border-0 bg-white" type="submit"><ion-icon  class="text-black text-[33px]" name="basket"></ion-icon></button>
+              </form>
+            </div>
+            <!-- <p class="info-description"><%=  items[i].description %></p> -->
+          </div>
+        </div>
+      </div>  
+        <% if(items.lenght == 4){break}%>
+      
+      <% } %>
   
 </div>
 

@@ -15,7 +15,10 @@ async function main() {
             {image:"DemonSlayer.jpg", title: "Demon Slayer", parent_id:1},
             {image:"attackOnTitan.jpg", title: "Attak on Titan", parent_id:1},
             {image:"OnePanchMan.jpg", title: "OnePanchMan", parent_id:1},
-
+            {image:"Arcane.jpg", title: "Arcane", parent_id:3},
+            {image:"KaJ.jpg", title: "Король и Шут", parent_id:4},
+            {image:"IronMan.jpg", title: "Железный Человек", parent_id:6},
+            {image:"Trainers.jpg", title: "Кроссовки", parent_id:7},
         ],
         skipDuplicates: true
         }
