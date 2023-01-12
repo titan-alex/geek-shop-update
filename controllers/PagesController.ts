@@ -23,13 +23,24 @@ async index(req: Request, res: Response) {
                 parent_id: Number(2),
             }
         });
-        console.log(categories);
+        const clothes: categories[] = await prisma.categories.findMany({
+            where:{
+                parent_id: Number(7),
+            }
+        });
+        const other: categories[] = await prisma.categories.findMany({
+            where:{
+                id: { in: [4, 5] },
+            }    
+        });
 
         res.render('home', {
             'items': items,
             'categories': categories,
             'cinema': cinema,
             'games': games,
+            'other': other,
+            'clothes': clothes,
             auth: req.session.auth,
             name: req.session.name,
         });
